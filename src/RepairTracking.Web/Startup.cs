@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,13 +22,18 @@ namespace RepairTracking.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           services.ConfigureService().AddConnectionProviderMySql(Configuration);
+            services.AddConnectionProviderMySql(Configuration).AddSecurity(Configuration).ConfigureService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app,
+         IHostingEnvironment env,
+         IServiceProvider serviceProvider)
         {
+            app.UseAuthentication();
             app.Configure(env);
+            serviceProvider.CreateRoles().Wait();
+            serviceProvider.CreateAdmin().Wait();
         }
     }
 }
