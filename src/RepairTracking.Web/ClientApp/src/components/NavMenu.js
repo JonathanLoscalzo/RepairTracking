@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import './NavMenu.css';
 
 export default props => (
-  <Navbar inverse fixedTop fluid collapseOnSelect>
+  <Navbar inverse fixedTop fluid >
     <Navbar.Header>
       <Navbar.Brand>
         <Link to={'/'}>RepairTracking.Web</Link>
@@ -19,16 +19,21 @@ export default props => (
             <Glyphicon glyph='home' /> Home
           </NavItem>
         </LinkContainer>
-        <LinkContainer to={'/counter'}>
+        <LinkContainer to={'/client'} exact>
+          <NavItem>
+            <Glyphicon glyph='home' /> clientes
+          </NavItem>
+        </LinkContainer>
+        {/* <LinkContainer to={'/counter'}>
           <NavItem>
             <Glyphicon glyph='education' /> Counter
           </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/fetchdata'}>
+        </LinkContainer> */}
+        {/* <LinkContainer to={'/fetchdata'}>
           <NavItem>
             <Glyphicon glyph='th-list' /> Fetch data
           </NavItem>
-        </LinkContainer>
+        </LinkContainer> */}
       </Nav>
     </Navbar.Collapse>
   </Navbar>
