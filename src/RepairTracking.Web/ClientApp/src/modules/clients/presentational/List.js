@@ -1,19 +1,21 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 
-const List = ({ clients, goToEdit }) => {
+const List = ({ clients, goToEdit, goToCreate }) => {
     return (<div>
         <div className="">
             <div className="table-wrapper">
                 <div className="table-title">
                     <div className="row">
                         <div className="col-sm-6"><h2>Listado de <b>Clientes</b></h2></div>
-                        <div className="col-sm-2">
-                            <button type="button" className="btn btn-info add-new"><i className="fa fa-plus"></i> Nuevo Cliente</button>
-                        </div>
+
                     </div>
                 </div>
-                <table className="table table-bordered">
+                <div class="btn-toolbar">
+                    <button onClick={() => goToCreate()} type="button" className="btn btn-info add-new">
+                        <i className="fa fa-plus"></i> Nuevo Cliente
+                            </button>
+                </div>
+                <table className="table table-bordered table-condensed table-hover">
                     <thead>
                         <tr>
                             <th>Name</th>

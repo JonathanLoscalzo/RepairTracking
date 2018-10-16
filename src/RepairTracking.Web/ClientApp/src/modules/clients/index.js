@@ -105,6 +105,10 @@ export const goToEdit = id => dispatch => {
     });
 }
 
+export const goToCreate = () => dispatch => {
+  dispatch(push("/client/new"))
+}
+
 export const goToClients = () => dispatch => {
   dispatch({ type: UPDATE_CANCEL })
   toast.info("Edición Cancelada");
@@ -113,10 +117,8 @@ export const goToClients = () => dispatch => {
 
 export const create = client => dispatch => {
   dispatch({ type: CREATE_REQUEST })
-
-  // call api
-
-  //return api
+  toast.success("Se creó correctamente");
+  dispatch(replace("/client"));
   dispatch({ type: CREATE_RESPONSE, payload: { client } })
 }
 

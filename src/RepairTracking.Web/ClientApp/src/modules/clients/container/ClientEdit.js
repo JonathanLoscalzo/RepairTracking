@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Spinner from '../../common/loading/spinner';
 import Update from '../presentational/Update';
-import { update, goToClients} from '../index'
+import { update, goToClients } from '../index'
 
 class Clients extends React.Component {
     render() {
