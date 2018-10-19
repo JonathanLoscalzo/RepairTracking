@@ -16,8 +16,6 @@ export default () => (
       <Route path='/client/edit/:id' component={ClientEdit} />
       <Route path='/client/show/:id' component={ClientEdit} />
       <Route path='/client/new' component={ClientNew} />
-      {/* <Route path='/counter' component={Counter} /> */}
-      {/* <Route path='/fetchdata/:startDateIndex?' component={FetchData} /> */}
     </Layout>
     <ToastContainer autoClose={2000} />
   </div>
