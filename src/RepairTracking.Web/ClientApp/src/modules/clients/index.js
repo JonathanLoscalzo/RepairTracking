@@ -9,23 +9,20 @@ import api from '../common/api';
 import { toast } from 'react-toastify';
 
 // Actions
-const LOAD = 'clients/LOAD';
 const LOAD_REQUEST = 'clients/LOAD_REQUEST';
 const LOAD_RESPONSE = 'clients/LOAD_RESPONSE';
 const LOAD_ERROR = 'clients/LOAD_ERROR';
 
-const CREATE = 'clients/CREATE';
 const CREATE_REQUEST = 'clients/CREATE_REQUEST';
 const CREATE_RESPONSE = 'clients/CREATE_RESPONSE';
 const CREATE_ERROR = 'clients/CREATE_ERROR';
+const CREATE_CANCEL = 'clients/CREATE_CANCEL';
 
-const UPDATE = 'clients/UPDATE';
 const UPDATE_REQUEST = 'clients/UPDATE_REQUEST';
 const UPDATE_RESPONSE = 'clients/UPDATE_RESPONSE';
 const UPDATE_ERROR = 'clients/UPDATE_ERROR';
 const UPDATE_CANCEL = 'clients/UPDATE_CANCEL';
 
-const REMOVE = 'clientas/REMOVE';
 const REMOVE_REQUEST = 'clients/REMOVE_REQUEST';
 const REMOVE_RESPONSE = 'clients/REMOVE_RESPONSE';
 const REMOVE_ERROR = 'clients/REMOVE_ERROR';
@@ -44,9 +41,23 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case REMOVE_REQUEST:
+      return { ...state, loading: true };
     case REMOVE_RESPONSE:
+      // TODO eliminar el cliente 
+      return { ...state, loading: false, clients: state.clients };
     case REMOVE_ERROR:
-      break;
+      return { ...state, loading: false, selectedClient: null };
+
+    case CREATE_REQUEST:
+      return { ...state, loading: true };
+    case CREATE_RESPONSE:
+      //TODO agregar cliente
+      return { ...state, loading: false, clients: state.clients, selectedClient: null };
+    case CREATE_ERROR:
+      return { ...state, loading: false };
+    case CREATE_CANCEL:
+      return { ...state, loading: false, selectedClient: null };
+
     case UPDATE_REQUEST:
       return { ...state, loading: true };
     case UPDATE_RESPONSE:
@@ -54,7 +65,7 @@ export default function reducer(state = initialState, action = {}) {
       return { ...state, loading: false, clients: state.clients, selectedClient: null };
     case UPDATE_ERROR:
       return { ...state, loading: false };
-    case UPDATE_ERROR:
+    case UPDATE_CANCEL:
       return { ...state, loading: false, selectedClient: null };
 
     case LOAD_REQUEST:
@@ -70,8 +81,7 @@ export default function reducer(state = initialState, action = {}) {
       return { ...state, loading: false, selectedClient: action.payload };
     case RETRIEVE_ERROR:
       return { ...state, loading: false, selectedClient: null };
-      break;
-    // do reducer stuff
+
     default: return state;
   }
 }
