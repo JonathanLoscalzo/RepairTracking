@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { create, load, remove, update, goToEdit, goToCreate} from '../index';
+import { create, load, remove, update, goToEdit, goToCreate } from '../index';
 import List from '../presentational/List';
 import Spinner from '../../common/loading/spinner';
 
@@ -14,10 +14,10 @@ class Clients extends React.Component {
         if (this.props.loading) {
             return (<Spinner />)
         } else {
-            return <List 
-            clients={this.props.clients} 
-            goToEdit={(id) => this.props.goToEdit(id)}
-            goToCreate={this.props.goToCreate} />
+            return <List
+                clients={this.props.clients}
+                goToEdit={(id) => this.props.goToEdit(id)}
+                goToCreate={this.props.goToCreate} />
         }
     }
 }

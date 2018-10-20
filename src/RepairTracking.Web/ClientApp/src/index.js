@@ -2,6 +2,7 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap'
+import './vendor/sb-admin-2.css'
 //import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import React from 'react';
