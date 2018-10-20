@@ -6,7 +6,7 @@ const List = ({ clients, goToEdit, goToCreate }) => {
             <div className="wrapper-header">
                 <div className="col-lg">
                     <h1 className="page-header">
-                        <h2></h2>Listado de <b>Clientes</b>
+                        Listado de <b>Clientes</b>
                     </h1>
                 </div>
             </div>

@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import Create from '../presentational/Create'
 import Spinner from '../../common/loading/spinner';
 import { create, goToClients } from '../index'
+//import FormikForm from '../../../design-examples/FormikForm';
+//import AsyncValidate from '../../../design-examples/FormValidationYup';
 
 class ClientNew extends React.Component {
     componentWillMount() {
@@ -12,11 +14,14 @@ class ClientNew extends React.Component {
 
     render() {
         const { create, goToClients, client } = this.props;
-        debugger
+
         if (this.props.loading) {
             return (<Spinner />)
         } else {
             return <Create add={create} cancel={goToClients} client={client} />
+            // return <AsyncValidate
+            //     initialValues={{ prueba:3, firstName: 'epepe', email: "asdf@asdf.com" }}
+            //     onSubmit={(values, dispatch) => { debugger; }} />
         }
     }
 }
