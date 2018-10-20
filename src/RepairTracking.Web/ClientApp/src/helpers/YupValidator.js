@@ -1,4 +1,4 @@
-import { set } from "lodash";
+import { set } from 'lodash';
 
 const Validator = schema => values => {
     const formErrors = {};

@@ -12,7 +12,7 @@ const renderField = (props) => {
             <label className="control-label" htmlFor={input.name}>{label}</label>
             <div>
                 <div >
-                    <Input  {...input} {...props} children={mapToChildren(options)} />
+                    <Input valid={touched && !error} invalid={touched && error} {...input} {...props} children={mapToChildren(options)} />
                 </div>
                 {touched
                     && ((error

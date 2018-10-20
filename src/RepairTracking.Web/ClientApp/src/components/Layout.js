@@ -1,16 +1,12 @@
 import React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'reactstrap';
 import NavMenu from './NavMenu';
 
 export default props => (
-  <Grid fluid>
-    <Row>
-      <Col sm={3}>
+    <React.Fragment>
         <NavMenu />
-      </Col>
-      <Col sm={9}>
-        {props.children}
-      </Col>
-    </Row>
-  </Grid>
+        <Container fluid>
+            {props.children}
+        </Container>
+    </React.Fragment>
 );
