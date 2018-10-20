@@ -21,19 +21,9 @@ export default props => (
         </LinkContainer>
         <LinkContainer to={'/client'} exact>
           <NavItem>
-            <Glyphicon glyph='home' /> clientes
+            <Glyphicon glyph='book' /> Clientes
           </NavItem>
         </LinkContainer>
-        {/* <LinkContainer to={'/counter'}>
-          <NavItem>
-            <Glyphicon glyph='education' /> Counter
-          </NavItem>
-        </LinkContainer> */}
-        {/* <LinkContainer to={'/fetchdata'}>
-          <NavItem>
-            <Glyphicon glyph='th-list' /> Fetch data
-          </NavItem>
-        </LinkContainer> */}
       </Nav>
     </Navbar.Collapse>
   </Navbar>
