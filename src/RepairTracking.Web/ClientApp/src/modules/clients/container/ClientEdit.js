@@ -7,13 +7,14 @@ import { update, goToClients } from '../index'
 
 class Clients extends React.Component {
     render() {
-        if (this.props.loading) {
+        const {selectedClient, update, goToClients, loading} = this.props;
+        if (loading) {
             return (<Spinner />)
         } else {
             return <Update
-                client={this.props.selectedClient}
-                update={this.props.update}
-                cancel={this.props.goToClients} />
+                client={selectedClient}
+                update={update}
+                cancel={goToClients} />
         }
     }
 }
