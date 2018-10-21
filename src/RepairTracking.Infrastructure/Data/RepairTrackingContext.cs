@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using RepairTracking.Infrastructure.Security;
+using RepairTracking.Core.Entities;
+using RepairTracking.Core.ValueObjects;
 
 namespace RepairTracking.Infrastructure.Data
 {
@@ -10,5 +12,11 @@ namespace RepairTracking.Infrastructure.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+        public DbSet<Client> Clients { get; set; }
     }
 }

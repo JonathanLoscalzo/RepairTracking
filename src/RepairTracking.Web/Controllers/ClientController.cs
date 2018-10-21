@@ -1,49 +1,66 @@
 using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RepairTracking.Core.Entities;
+using RepairTracking.Core.Interfaces.Repositories;
 using RepairTracking.Web.ViewModels;
+using RepairTracking.Web.ViewModels.Client;
 
 namespace RepairTracking.Web.Controllers
 {
     [ApiController, Route("api/[controller]")]
     public class ClientController : ControllerBase
     {
-        public ClientController()
-        {
+        private IMapper mapper;
+        private IClientRepository repository;
 
+        public ClientController(IMapper mapper, IClientRepository repository)
+        {
+            this.mapper = mapper;
+            this.repository = repository;
         }
 
         [HttpGet]
         public IEnumerable<ClientDto> Get()
         {
-            return new List<ClientDto>(){
-                new ClientDto(),
-                new ClientDto(),
-                new ClientDto(),
-            };
+            return this.repository.FetchAll()
+                .ToList()
+                .Select(this.mapper.Map<ClientDto>);
         }
 
         [HttpGet, Route("{id}")]
         public ClientDto Get(string id)
         {
-            return new ClientDto();
+            return this.mapper.Map<ClientDto>(this.repository.GetById(id));
         }
 
         [HttpDelete, Route("{id}")]
-        public void Delete(string id)
+        public ActionResult Delete(string id)
         {
-            return ; //new ClientDto();
+            var client = this.repository.GetById(id);
+            if (client == null) return NotFound();
+            this.repository.Delete(client);
+            return NoContent();
         }
 
         [HttpPost]
-        public ClientDto Create(ClientDto client)
+        public ActionResult Create(ClientDto client)
         {
-            return new ClientDto();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(modelState: ModelState);
+            }
+
+            var created = this.repository.Add(this.mapper.Map<Client>(client));
+            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
         }
 
         [HttpPut("{id}")]
-        public ClientDto Update(ClientDto client)
+        public ActionResult Update(ClientDto client)
         {
-            return new ClientDto();
+            this.repository.Update(this.mapper.Map<Client>(client));
+            return NoContent();
         }
     }
 }
