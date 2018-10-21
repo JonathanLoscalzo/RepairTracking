@@ -13,7 +13,7 @@ class Clients extends React.Component {
         } else {
             return <Update
                 client={selectedClient}
-                update={update}
+                onSubmit={values => update(values)}
                 cancel={goToClients} />
         }
     }
