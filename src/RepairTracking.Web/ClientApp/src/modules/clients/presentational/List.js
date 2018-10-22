@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap'
 
 const List = ({ clients, goToEdit, goToCreate }) => {
+    console.log(clients);
     return (
         <div id="wrapper">
             <div className="wrapper-header">
@@ -26,21 +27,21 @@ const List = ({ clients, goToEdit, goToCreate }) => {
                                     </button>
                                 </div>
                                 <table className="table table-sm table-bordered table-hover">
-                                    <thead class="thead-dark">
+                                    <thead className="thead-dark">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Department</th>
-                                            <th>Phone</th>
-                                            <th>Actions</th>
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                            <th>Teléfono de contacto</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {clients.length > 0
                                             ? clients.map((client, index) => (
                                                 <tr key={index}>
-                                                    <td>John Doe</td>
-                                                    <td>Administration</td>
-                                                    <td>(171) 555-2222</td>
+                                                    <td>{client.firstname} {client.lastname}</td>
+                                                    <td>{client.email}</td>
+                                                    <td>{client.cellphone}</td>
                                                     <td>
                                                         <button type="button" className="btn btn-primary btn-sm" onClick={() => goToEdit(index)}><i className="glyphicon glyphicon-pencil"></i> </button>
                                                     </td>
