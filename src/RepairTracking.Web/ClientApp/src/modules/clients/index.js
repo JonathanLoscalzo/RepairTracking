@@ -94,6 +94,7 @@ export const load = () => dispatch => {
 
     api.get(url)
         .then((response) => {
+            console.log(response.data);
             dispatch({ type: LOAD_RESPONSE, payload: response.data })
         })
         .catch(() => {
@@ -113,6 +114,7 @@ export const goToEdit = id => dispatch => {
             dispatch(push(`/client/edit/${id}`));
         })
         .catch(() => {
+            console.log('jaja');
             toast.error('Ocurrió un error');
             dispatch({ type: RETRIEVE_ERROR, error: 'Ocurrió un error' })
         });

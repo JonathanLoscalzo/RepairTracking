@@ -4,7 +4,6 @@ import {Label, Input, FormFeedback} from 'reactstrap';
 
 const RenderFieldUpdate = (props) => {
   const {input, input: { name} , label, placeholder, type, meta: {error, touched, pristine}} = props;
-  console.log(error && touched);
   return (
     <div className="px-0 py-0">
         <Label for={ name }>{ label }</Label>

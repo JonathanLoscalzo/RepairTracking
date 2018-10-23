@@ -102,6 +102,10 @@ const UpdateForm = ({pristine, submitting, reset, handleSubmit, cancel}) => {
 };
 
 const Update = (props) => {
+    props.initialize({
+        firstName: 'Mariano',
+        lastName: 'Martinelli'
+    }); // TODO: solucionar temita de la api que no recupera al cliente seleccionado
     return (
         <div id="wrapper">
             <div className="wrapper-header">

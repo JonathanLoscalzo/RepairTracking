@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap'
 
 const List = ({ clients, goToEdit, goToCreate }) => {
-    console.log(clients);
     return (
         <div id="wrapper">
             <div className="wrapper-header">

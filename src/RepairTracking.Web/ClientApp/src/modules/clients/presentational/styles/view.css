@@ -1,0 +1,15 @@
+.header {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.section{
+    padding-top: 25px;
+    padding-left: 15px;
+    border-top: 1px rgb(192, 187, 187) solid; /* Todo: Buscar un mejor color */
+}
+
+.data{
+    font-family: Helvetica;
+
+}
