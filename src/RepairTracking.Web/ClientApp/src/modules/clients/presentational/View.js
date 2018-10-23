@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container, Card, CardHeader, CardBody, Table} from 'reactstrap';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { FaEdit } from "react-icons/fa";
 import style from './styles/view.css';
 
 const View = (props) => {
@@ -22,7 +23,7 @@ const View = (props) => {
                     </NavItem>
                 </Nav>
                 <div className="text-center header">
-                    <h2>Mariano Martinelli</h2>
+                    <h2>Mariano Martinelli</h2><FaEdit onClick={() => props.goToEdit(1, 'edit')}/>
                 </div>
                 <CardHeader className="bg-default w-25">Datos personales</CardHeader>
                 <div className="section mb-4">
@@ -34,11 +35,11 @@ const View = (props) => {
                         </tr>
                         <tr>
                             <th scope="row">Documento</th>
-                            <td>40714217</td>
+                            <td>40000000</td>
                         </tr>
                         <tr>
                             <th scope="row">Celular</th>
-                            <td>221-6546807</td>
+                            <td>221-6546897</td>
                         </tr>
                         <tr>
                             <th scope="row">Teléfono</th>
@@ -56,7 +57,7 @@ const View = (props) => {
                                 <tbody>
                                     <tr>
                                         <th scope="row">Domicilio</th>
-                                        <td>Calle 505</td>
+                                        <td>Calle 480</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Altura</th>
@@ -96,6 +97,9 @@ const View = (props) => {
                     </Row>
                 </div>
             </CardBody>
+            <div className="clearfix mb-3 mr-4">
+                    <Button color="primary" className="float-right" onClick={() => props.cancel() }>Volver</Button>
+                </div>
         </Card>
     </Container>
   )

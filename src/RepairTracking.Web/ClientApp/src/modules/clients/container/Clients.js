@@ -16,7 +16,7 @@ class Clients extends React.Component {
         } else {
             return <List
                 clients={this.props.clients}
-                goToEdit={(id) => this.props.goToEdit(id)}
+                goToEdit={(id, view) => this.props.goToEdit(id, view)}
                 goToCreate={this.props.goToCreate} />
         }
     }

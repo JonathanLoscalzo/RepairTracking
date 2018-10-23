@@ -94,7 +94,6 @@ export const load = () => dispatch => {
 
     api.get(url)
         .then((response) => {
-            console.log(response.data);
             dispatch({ type: LOAD_RESPONSE, payload: response.data })
         })
         .catch(() => {
@@ -103,7 +102,7 @@ export const load = () => dispatch => {
         });
 }
 
-export const goToEdit = id => dispatch => {
+export const goToEdit = (id, view) => dispatch => {
     dispatch({ type: RETRIEVE_REQUEST })
 
     const url = `client/${id}`;
@@ -111,10 +110,9 @@ export const goToEdit = id => dispatch => {
     api.get(url)
         .then((response) => {
             dispatch({ type: RETRIEVE_RESPONSE, payload: response.data });
-            dispatch(push(`/client/edit/${id}`));
+            dispatch(push(`/client/${view}/${id}`));
         })
         .catch(() => {
-            console.log('jaja');
             toast.error('Ocurrió un error');
             dispatch({ type: RETRIEVE_ERROR, error: 'Ocurrió un error' })
         });
@@ -127,6 +125,11 @@ export const goToCreate = () => dispatch => {
 export const goToClients = () => dispatch => {
     dispatch({ type: UPDATE_CANCEL })
     toast.info('Edición Cancelada');
+    dispatch(replace('/client'))
+}
+
+export const goToClientsWithNoToast = () => dispatch => {
+    dispatch({ type: UPDATE_CANCEL })
     dispatch(replace('/client'))
 }
 

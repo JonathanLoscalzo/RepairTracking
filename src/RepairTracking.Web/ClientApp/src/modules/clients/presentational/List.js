@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap'
 
 const List = ({ clients, goToEdit, goToCreate }) => {
+    const view = 'show';
     return (
         <div id="wrapper">
             <div className="wrapper-header">
@@ -42,7 +43,7 @@ const List = ({ clients, goToEdit, goToCreate }) => {
                                                     <td>{client.email}</td>
                                                     <td>{client.cellphone}</td>
                                                     <td>
-                                                        <button type="button" className="btn btn-primary btn-sm" onClick={() => goToEdit(index)}><i className="glyphicon glyphicon-pencil"></i> </button>
+                                                        <button type="button" className="btn btn-primary btn-sm" onClick={() => goToEdit(index, view)}><i className="glyphicon glyphicon-pencil"></i> </button>
                                                     </td>
                                                 </tr>
                                             ))

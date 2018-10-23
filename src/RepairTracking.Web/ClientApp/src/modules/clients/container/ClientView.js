@@ -2,27 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Spinner from '../../common/loading/spinner';
-import { update, goToClients } from '../index'
+import { update, goToClientsWithNoToast, goToEdit } from '../index'
 import View from '../presentational/View';
 
 class ClientView extends React.Component {
     render() {
-        const {selectedClient, update, goToClients, loading} = this.props;
+        const {selectedClient, update, goToClientsWithNoToast, loading, goToEdit} = this.props;
         if (loading) {
             return (<Spinner />)
         } else {
             return <View
                 client={selectedClient}
-                onSubmit={values => update(values)}
-                cancel={goToClients} />
+                goToEdit={(id, view) => goToEdit(id, view)}
+                cancel={goToClientsWithNoToast} />
         }
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
     selectedClient: state.selectedClient
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ update, goToClients }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ update, goToClientsWithNoToast, goToEdit }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientView);
