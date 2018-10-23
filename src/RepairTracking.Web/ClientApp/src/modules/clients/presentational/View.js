@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import style from './styles/view.css';
 
 const View = (props) => {
+   const {client} = props;
   return (
     <Container className="py-4 px-4">
         <Card>
@@ -23,7 +24,7 @@ const View = (props) => {
                     </NavItem>
                 </Nav>
                 <div className="text-center header">
-                    <h2>Mariano Martinelli</h2><FaEdit onClick={() => props.goToEdit(1, 'edit')}/>
+                    <h2>{client.firstname} {' '} {client.lastname}</h2><FaEdit onClick={() => props.goToEdit(props.client.id, 'edit')}/>
                 </div>
                 <CardHeader className="bg-default w-25">Datos personales</CardHeader>
                 <div className="section mb-4">
@@ -31,19 +32,19 @@ const View = (props) => {
                         <tbody>
                         <tr>
                             <th scope="row">Email</th>
-                            <td>mariano_martinelli@yahoo.com.ar</td>
+                            <td>{client.email}</td>
                         </tr>
                         <tr>
                             <th scope="row">Documento</th>
-                            <td>40000000</td>
+                            <td>{client.document === null ? '-' : client.document.number}</td>
                         </tr>
                         <tr>
                             <th scope="row">Celular</th>
-                            <td>221-6546897</td>
+                            <td>{client.cellphone}</td>
                         </tr>
                         <tr>
                             <th scope="row">Teléfono</th>
-                            <td>221-4789900</td>
+                            <td>{client.telephone === null ? '-' : client.telephone}</td>
                         </tr>
                         
                         </tbody>
@@ -57,19 +58,19 @@ const View = (props) => {
                                 <tbody>
                                     <tr>
                                         <th scope="row">Domicilio</th>
-                                        <td>Calle 480</td>
+                                        <td>{client.address === null ? '-' : client.address.street}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Altura</th>
-                                        <td>408</td>
+                                        <td>{client.address === null ? '-' : client.address.number}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Piso</th>
-                                        <td>4</td>
+                                        <td>{client.address === null ? '-' : client.address.floor}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Depto</th>
-                                        <td>3A</td>
+                                        <td>{client.address === null ? '-' : client.address.floor}</td>
                                     </tr>
                             
                                 </tbody>

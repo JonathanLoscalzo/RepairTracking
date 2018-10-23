@@ -7,6 +7,7 @@ import View from '../presentational/View';
 
 class ClientView extends React.Component {
     render() {
+        
         const {selectedClient, update, goToClientsWithNoToast, loading, goToEdit} = this.props;
         if (loading) {
             return (<Spinner />)
@@ -19,8 +20,8 @@ class ClientView extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    selectedClient: state.selectedClient
+const mapStateToProps = (state, ownProps) => ({
+    selectedClient: state.client.selectedClient
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ update, goToClientsWithNoToast, goToEdit }, dispatch);

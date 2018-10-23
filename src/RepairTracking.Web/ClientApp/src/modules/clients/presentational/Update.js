@@ -9,8 +9,8 @@ import Validator from '../../../helpers/YupValidator'
 
 
 const schema = yup.object().shape({
-    firstName: yup.string().required('El nombre es requerido'),
-    lastName: yup.string().required('El apellido es requerido'),
+    firstname: yup.string().required('El nombre es requerido'),
+    lastname: yup.string().required('El apellido es requerido'),
     document: yup.object().shape({
         type: yup.string(),
         number: yup.number().typeError('Se esperaba un número').required('El número de documento es requerido')
@@ -31,15 +31,15 @@ const options = [
     { value: '2', label: 'PASAPORTE' },
 ]
 
-const UpdateForm = ({pristine, submitting, reset, handleSubmit, cancel}) => {
+const UpdateForm = ({submitting, handleSubmit, cancel}) => {
     return(
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <FormGroup className="col-md-6">
-                        <Field label="Nombre *" name="firstName" placeholder="Nombre" component={RenderField} type="text" />
+                        <Field label="Nombre *" name="firstname" placeholder="Nombre" component={RenderField} type="text" />
                     </FormGroup>
                     <FormGroup className="col-md-6">
-                        <Field label="Apellido *" name="lastName"  placeholder="Apellido" component={RenderField} type="text" />
+                        <Field label="Apellido *" name="lastname"  placeholder="Apellido" component={RenderField} type="text" />
                     </FormGroup>
                 </Row>
                 <FormSection name="document">
@@ -89,7 +89,7 @@ const UpdateForm = ({pristine, submitting, reset, handleSubmit, cancel}) => {
                         <Field label="Teléfono celular *" name="cellphone"  placeholder="Teléfono celular" component={RenderField} type="text" />  
                     </FormGroup>
                     <FormGroup className="col-md-6">
-                        <Field label="Teléfono adicional" name="additionalTel"  placeholder="Teléfono adicional" component={RenderField} type="text" />
+                        <Field label="Teléfono adicional" name="telephone"  placeholder="Teléfono adicional" component={RenderField} type="text" />
                     </FormGroup>
                 </Row>
                 <div className="clearfix">
@@ -103,9 +103,8 @@ const UpdateForm = ({pristine, submitting, reset, handleSubmit, cancel}) => {
 
 const Update = (props) => {
     props.initialize({
-        firstName: 'Mariano',
-        lastName: 'Martinelli'
-    }); // TODO: solucionar temita de la api que no recupera al cliente seleccionado
+        ...props.client
+    });
     return (
         <div id="wrapper">
             <div className="wrapper-header">

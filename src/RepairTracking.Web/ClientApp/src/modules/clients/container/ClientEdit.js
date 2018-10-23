@@ -20,7 +20,7 @@ class Clients extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    selectedClient: state.selectedClient
+    selectedClient: state.client.selectedClient
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ update, goToClients }, dispatch);
