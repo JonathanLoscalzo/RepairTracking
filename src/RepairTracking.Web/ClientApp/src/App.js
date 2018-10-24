@@ -8,16 +8,29 @@ import Clients from './modules/clients/container/Clients';
 import ClientEdit from './modules/clients/container/ClientEdit';
 import ClientNew from './modules/clients/container/ClientNew';
 import ClientView from './modules/clients/container/ClientView';
+import LoginPage from './modules/auth/containers/LoginPage';
+import LogoutPage from './modules/auth/containers/LogoutPage';
+
+const Private = (props) => {
+    if (localStorage.getItem('JWT_LOGIN')) {
+        return (<React.Fragment> {props.children} </React.Fragment>)
+    } else {
+        return (<React.Fragment><LoginPage /></React.Fragment>)
+    }
+}
 
 export default () => (
-  <div>
-    <Layout>
-      <Route exact path='/' component={Home} />
-      <Route exact path='/client' component={Clients} />
-      <Route path='/client/edit/:id' component={ClientEdit} />
-      <Route path='/client/show/:id' component={ClientView} />
-      <Route path='/client/new' component={ClientNew} />
-    </Layout>
-    <ToastContainer autoClose={2000} />
-  </div>
+    <div>
+        <Private>
+            <Layout>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/client' component={Clients} />
+                <Route path='/client/edit/:id' component={ClientEdit} />
+                <Route path='/client/show/:id' component={ClientView} />
+                <Route path='/client/new' component={ClientNew} />
+                <Route path="/logout" component={LogoutPage} />
+            </Layout>
+            <ToastContainer autoClose={2000} />
+        </Private>
+    </div>
 );

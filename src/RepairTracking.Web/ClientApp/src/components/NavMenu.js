@@ -56,9 +56,9 @@ export default class extends React.Component {
                         </LinkContainer>
                     </Nav>
                     <Nav className="ml-auto" navbar>
-                        <LinkContainer to={'/repairs'} exact>
+                        <LinkContainer to={'/logout'} exact>
                             <NavItem>
-                                <NavLink disabled>
+                                <NavLink>
                                     <MdVpnKey /> Cerrar Sesión
                                 </NavLink>
                             </NavItem>

@@ -43,8 +43,8 @@ namespace RepairTracking.Web.Controllers
                 var appUser = this.userManager.Users.SingleOrDefault(r => r.UserName == model.UserName);
                 return await GenerateJwtToken(model.UserName, appUser);
             }
-
-            throw new ApplicationException("INVALID_LOGIN_ATTEMPT");
+            
+            return BadRequest("INVALID_LOGIN_ATTEMPT");
         }
 
         [Authorize(AuthenticationSchemes="Bearer")]

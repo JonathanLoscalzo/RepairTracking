@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RepairTracking.Core.Entities;
 using RepairTracking.Core.Interfaces.Repositories;
@@ -10,6 +11,7 @@ using RepairTracking.Web.ViewModels.Client;
 namespace RepairTracking.Web.Controllers
 {
     [ApiController, Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes="Bearer")]
     public class ClientController : ControllerBase
     {
         private IMapper mapper;
