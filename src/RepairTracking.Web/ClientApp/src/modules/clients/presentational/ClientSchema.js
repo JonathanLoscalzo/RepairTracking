@@ -6,9 +6,9 @@ import '../../../helpers/YupConfig'
 const schema = yup
     .object()
     .shape({
-        firstName: yup.string()
+        firstname: yup.string()
             .required(messages.REQUIRED),
-        lastName: yup.string()
+        lastname: yup.string()
             .required(messages.REQUIRED),
         email: yup.string()
             .email(messages.EMAIL)

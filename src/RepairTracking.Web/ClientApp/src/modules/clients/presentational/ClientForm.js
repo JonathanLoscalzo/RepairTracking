@@ -6,7 +6,7 @@ import RenderField from '../../common/inputs/RenderFieldUpdate';
 import RenderSelectableField from '../../common/inputs/Selectable';
 
 const options = [
-    { value: '-1', label: 'SELECCIONÁ' },
+    { value: '-1', label: 'Elija una opción' },
     { value: '0', label: 'DNI' },
     { value: '1', label: 'PASAPORTE' },
 ]
