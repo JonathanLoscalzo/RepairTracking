@@ -1,8 +1,15 @@
 import axios from 'axios';
-// TODO: Levantar token desde aquí
+
 const api = axios.create({
     baseURL: '/api',
-    headers: { 'Authorization': `Bearer ${localStorage.getItem('JWT_LOGIN')}` }
+})
+
+api.interceptors.request.use(config => {
+    if (localStorage.getItem('JWT_LOGIN')) {
+        config.headers.common.Authorization = `Bearer ${localStorage.getItem('JWT_LOGIN')}`;
+    }
+
+    return config;
 })
 
 export default api;
