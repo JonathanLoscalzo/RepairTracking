@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux'
 import Create from '../presentational/Create'
 import Spinner from '../../common/loading/spinner'
 import { create, goToClients } from '../index'
-import FormValidationJoi from '../../../design-examples/FormValidationJoi'
-import { debug } from 'util';
 
 class ClientNew extends React.Component {
     componentWillMount() {
@@ -47,7 +45,7 @@ const mapStateToProps = (state) => ({
         cellphone: '',
         telephone: ''
     },
-    loading: false
+    loading: state.client.loading
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ goToClients, create }, dispatch)

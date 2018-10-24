@@ -2,28 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Spinner from '../../common/loading/spinner';
-import { update, goToClientsWithNoToast, goToEdit } from '../index'
+import { update, goToClientsWithNoToast, goToEdit, goToShow } from '../index'
 import View from '../presentational/View';
 
 class ClientView extends React.Component {
     render() {
-        
-        const {selectedClient, update, goToClientsWithNoToast, loading, goToEdit} = this.props;
+        const { selectedClient, goToClientsWithNoToast, loading, goToEdit, goToShow } = this.props;
         if (loading) {
             return (<Spinner />)
         } else {
             return <View
                 client={selectedClient}
-                goToEdit={(id, view) => goToEdit(id, view)}
+                goToEdit={(id) => goToEdit(id)}
+                goToShow={(id) => goToShow(id)}
                 cancel={goToClientsWithNoToast} />
         }
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    selectedClient: state.client.selectedClient
+const mapStateToProps = (state) => ({
+    selectedClient: state.client.selectedClient,
+    loading: state.client.loading
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ update, goToClientsWithNoToast, goToEdit }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ update, goToClientsWithNoToast, goToEdit, goToShow }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientView);

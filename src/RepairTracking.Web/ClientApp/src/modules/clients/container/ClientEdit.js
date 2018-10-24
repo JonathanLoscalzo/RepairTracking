@@ -12,15 +12,16 @@ class Clients extends React.Component {
             return (<Spinner />)
         } else {
             return <Update
-                client={selectedClient}
+                initialValues={selectedClient}
                 onSubmit={values => update(values)}
                 cancel={goToClients} />
         }
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    selectedClient: state.client.selectedClient
+const mapStateToProps = (state) => ({
+    selectedClient: state.client.selectedClient,
+    loading: state.client.loading
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ update, goToClients }, dispatch);

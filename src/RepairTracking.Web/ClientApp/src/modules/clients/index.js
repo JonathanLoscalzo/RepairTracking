@@ -102,15 +102,41 @@ export const load = () => dispatch => {
         });
 }
 
-export const goToEdit = (id, view) => dispatch => {
+export const goToEdit = (id) => dispatch => {
     dispatch({ type: RETRIEVE_REQUEST })
 
     const url = `client/${id}`;
 
     api.get(url)
         .then((response) => {
-            dispatch({ type: RETRIEVE_RESPONSE, payload: response.data });
-            dispatch(push(`/client/${view}/${id}`));
+            if (response.status == 404) {
+                toast.error('No existe el cliente que intenta recuperar');
+                dispatch({ type: RETRIEVE_ERROR });
+            } else {
+                dispatch({ type: RETRIEVE_RESPONSE, payload: response.data });
+                dispatch(push(`/client/edit/${id}`));
+            }
+        })
+        .catch(() => {
+            toast.error('Ocurrió un error');
+            dispatch({ type: RETRIEVE_ERROR, error: 'Ocurrió un error' })
+        });
+}
+
+export const goToShow = (id) => (dispatch, state) => {
+    dispatch({ type: RETRIEVE_REQUEST })
+
+    const url = `client/${id}`;
+
+    api.get(url)
+        .then((response) => {
+            if (response.status == 404) {
+                toast.error('No existe el cliente que intenta recuperar');
+                dispatch({ type: RETRIEVE_ERROR });
+            } else {
+                dispatch({ type: RETRIEVE_RESPONSE, payload: response.data });
+                dispatch(push(`/client/show/${id}`))
+            }
         })
         .catch(() => {
             toast.error('Ocurrió un error');
@@ -135,16 +161,35 @@ export const goToClientsWithNoToast = () => dispatch => {
 
 export const create = client => dispatch => {
     dispatch({ type: CREATE_REQUEST })
-    toast.success('Se creó correctamente');
-    dispatch(replace('/client'));
-    dispatch({ type: CREATE_RESPONSE, payload: { client } })
+
+    const url = 'client';
+    api.post(url, client)
+        .then((response) => {
+            dispatch({ type: CREATE_RESPONSE, payload: response.data })
+            toast.success('Se creó correctamente');
+            dispatch(replace('/client'));
+        })
+        .catch(() => {
+            toast.error('Ocurrió un error');
+            dispatch({ type: CREATE_ERROR, error: 'Ocurrió un error' })
+        });
+
 }
 
 export const update = client => dispatch => {
     dispatch({ type: UPDATE_REQUEST })
-    toast.success('Se actualizó correctamente');
-    dispatch(replace('/client'));
-    dispatch({ type: UPDATE_RESPONSE, payload: { client } })
+
+    const url = `client/${client.id}`;
+    api.put(url, client)
+        .then(() => {
+            dispatch({ type: UPDATE_RESPONSE })
+            toast.success('Se actualizó correctamente');
+            dispatch(replace('/client'));
+        })
+        .catch(() => {
+            toast.error('Ocurrió un error');
+            dispatch({ type: CREATE_ERROR, error: 'Ocurrió un error' })
+        });
 }
 
 export const remove = id => dispatch => {

@@ -1,3 +1,5 @@
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using RepairTracking.Core.Entities;
 using RepairTracking.Core.Interfaces.Repositories;
 using RepairTracking.Infrastructure.Data;
@@ -9,5 +11,10 @@ namespace RepairTracking.Infrastructure.Repositories
         public ClientRepository(RepairTrackingContext dbContext) : base(dbContext)
         {
         }
+
+        public override Client GetById(string id) => _dbContext.Clients
+                .Include(x => x.Address)
+                .Include(x => x.Document)
+                .SingleOrDefault(e => e.Id == id);
     }
 }
