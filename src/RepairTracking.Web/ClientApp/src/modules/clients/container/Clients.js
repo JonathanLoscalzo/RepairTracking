@@ -11,15 +11,13 @@ class Clients extends React.Component {
     }
 
     render() {
-        if (this.props.loading) {
-            return (<Spinner />)
-        } else {
-            return <List
+        return <Spinner loading={this.props.loading}>
+            <List
                 clients={this.props.clients}
                 goToEdit={(id) => this.props.goToEdit(id)}
                 goToShow={(id) => this.props.goToShow(id)}
                 goToCreate={this.props.goToCreate} />
-        }
+        </Spinner>
     }
 }
 

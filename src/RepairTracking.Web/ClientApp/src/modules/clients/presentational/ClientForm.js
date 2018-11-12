@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, FormGroup, Button } from 'reactstrap'
 import { Field, FormSection, Form } from 'redux-form';
 
-import RenderField from '../../common/inputs/RenderFieldUpdate';
+import RenderField from '../../common/inputs/RenderField';
 import RenderSelectableField from '../../common/inputs/Selectable';
 
 const options = [

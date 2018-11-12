@@ -14,7 +14,7 @@ namespace RepairTracking.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -139,6 +139,8 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<string>("Firstname");
 
+                    b.Property<string>("IsActive");
+
                     b.Property<string>("Lastname");
 
                     b.Property<string>("Telephone");
@@ -152,6 +154,70 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.ToTable("Clients");
                 });
 
+            modelBuilder.Entity("RepairTracking.Core.Entities.Element", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Brand");
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("IsActive");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Observations");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Elements");
+                });
+
+            modelBuilder.Entity("RepairTracking.Core.Entities.Piece", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("ElementId");
+
+                    b.Property<string>("IsActive");
+
+                    b.Property<string>("Name");
+
+                    b.Property<decimal>("Price");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ElementId");
+
+                    b.ToTable("Pieces");
+                });
+
+            modelBuilder.Entity("RepairTracking.Core.Entities.Task", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("ElementId");
+
+                    b.Property<string>("IsActive");
+
+                    b.Property<string>("Name");
+
+                    b.Property<decimal>("Price");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ElementId");
+
+                    b.ToTable("Tasks");
+                });
+
             modelBuilder.Entity("RepairTracking.Core.ValueObjects.Address", b =>
                 {
                     b.Property<string>("Id")
@@ -160,6 +226,8 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.Property<int?>("Depto");
 
                     b.Property<int?>("Floor");
+
+                    b.Property<string>("IsActive");
 
                     b.Property<int?>("Number");
 
@@ -174,6 +242,8 @@ namespace RepairTracking.Infrastructure.Migrations
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("IsActive");
 
                     b.Property<long>("Number");
 
@@ -288,6 +358,20 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.HasOne("RepairTracking.Core.ValueObjects.Document", "Document")
                         .WithMany()
                         .HasForeignKey("DocumentId");
+                });
+
+            modelBuilder.Entity("RepairTracking.Core.Entities.Piece", b =>
+                {
+                    b.HasOne("RepairTracking.Core.Entities.Element")
+                        .WithMany("Pieces")
+                        .HasForeignKey("ElementId");
+                });
+
+            modelBuilder.Entity("RepairTracking.Core.Entities.Task", b =>
+                {
+                    b.HasOne("RepairTracking.Core.Entities.Element")
+                        .WithMany("Tasks")
+                        .HasForeignKey("ElementId");
                 });
 #pragma warning restore 612, 618
         }

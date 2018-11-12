@@ -1,16 +1,18 @@
-﻿import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form'
 
 import client from '../modules/clients';
 import auth from '../modules/auth'
+import element from '../modules/element';
 
 export default function configureStore(history, initialState) {
     const reducers = {
         form: formReducer,
         auth,
         client,
+        element
     };
 
     const middleware = [

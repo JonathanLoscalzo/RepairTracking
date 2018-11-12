@@ -11,14 +11,12 @@ class LoginPage extends React.Component {
 
     render() {
         const { credentials, loading, errorMessage, login } = this.props;
-        if (loading) {
-            return (<Spinner />)
-        } else {
-            return <LoginForm
+        return <Spinner loading={loading}>
+            <LoginForm
                 errorMessage={errorMessage}
                 onSubmit={login}
                 initialValues={credentials} />
-        }
+        </Spinner>
     }
 }
 

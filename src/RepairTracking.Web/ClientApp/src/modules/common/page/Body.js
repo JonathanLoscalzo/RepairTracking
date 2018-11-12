@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Card,
+    Card, Row, 
     CardBody,
     CardHeader,
     Container
@@ -8,13 +8,13 @@ import {
 
 export default (props) => (
     <div className="wrapper-body" >
-        <Container>
-            <Card>
+        <Container fluid>
+            <Row>
                 {props.title && <CardHeader className="text-white bg-secondary">{props.title}</CardHeader>}
                 <CardBody className="mx-3 my-3">
                     {props.children}
                 </CardBody>
-            </Card>
+            </Row>
         </Container>
     </div>
 )

@@ -8,15 +8,13 @@ import View from '../presentational/View';
 class ClientView extends React.Component {
     render() {
         const { selectedClient, goToClientsWithNoToast, loading, goToEdit, goToShow } = this.props;
-        if (loading) {
-            return (<Spinner />)
-        } else {
-            return <View
+        return <Spinner loading={loading}>
+            <View
                 client={selectedClient}
                 goToEdit={(id) => goToEdit(id)}
                 goToShow={(id) => goToShow(id)}
                 cancel={goToClientsWithNoToast} />
-        }
+        </Spinner>
     }
 }
 

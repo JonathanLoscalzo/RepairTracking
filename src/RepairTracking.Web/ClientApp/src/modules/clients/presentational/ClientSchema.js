@@ -17,8 +17,8 @@ const schema = yup
             type: yup.string()
                 .notOneOf(['-1'], messages.OTHER)
                 .required(messages.REQUIRED),
-            number: yup.number()
-                .typeError(messages.NUMERIC)
+            number: yup.string().nullable()
+                .matches(/^[0-9]*$/, messages.NUMERIC)
                 .required(messages.REQUIRED)
         }),
         address: yup.object().shape({

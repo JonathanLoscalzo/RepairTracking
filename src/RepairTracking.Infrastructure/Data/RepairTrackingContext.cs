@@ -18,5 +18,8 @@ namespace RepairTracking.Infrastructure.Data
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Element> Elements { get; set; }
+        public DbSet<Piece> Pieces { get; set; }
+        public DbSet<Task> Tasks { get; set; }
     }
 }

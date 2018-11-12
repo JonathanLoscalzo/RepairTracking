@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap'
 import './vendor/sb-admin-2.css'
+import 'react-table/react-table.css'
+import 'react-widgets/dist/css/react-widgets.css';
+
 //import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import React from 'react';

@@ -33,13 +33,13 @@ export default class extends React.Component {
                 <NavbarToggler onClick={this.toggleNavbar} />
                 <Collapse isOpen={!this.state.collapsed} navbar>
                     <Nav navbar>
-                        <LinkContainer to={'/'} exact>
+                        {/* <LinkContainer to={'/'} exact>
                             <NavItem>
                                 <NavLink>
                                     <MdHome /> Home
                                 </NavLink>
                             </NavItem>
-                        </LinkContainer>
+                        </LinkContainer> */}
                         <LinkContainer to={'/client'} exact>
                             <NavItem>
                                 <NavLink>
@@ -51,6 +51,13 @@ export default class extends React.Component {
                             <NavItem>
                                 <NavLink disabled>
                                     <FaHammer /> Reparaciones
+                                </NavLink>
+                            </NavItem>
+                        </LinkContainer>
+                        <LinkContainer to={'/element'} exact>
+                            <NavItem>
+                                <NavLink>
+                                    <FaHammer /> Elementos Reparables
                                 </NavLink>
                             </NavItem>
                         </LinkContainer>

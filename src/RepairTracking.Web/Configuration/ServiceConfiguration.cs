@@ -11,6 +11,7 @@ namespace RepairTracking.Web.Configuration
         {
             services.AddAutoMapper();
             services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddTransient<IElementRepository, ElementRepository>();
             return services;
         }
     }

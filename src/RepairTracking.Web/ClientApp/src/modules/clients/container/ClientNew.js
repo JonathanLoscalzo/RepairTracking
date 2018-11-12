@@ -13,14 +13,12 @@ class ClientNew extends React.Component {
     render() {
         const { create, goToClients, client } = this.props
 
-        if (this.props.loading) {
-            return (<Spinner />)
-        } else {
-            return <Create
+        return <Spinner loading={this.props.loading} >
+            <Create
                 onSubmit={(values) => create(values)}
                 cancel={goToClients}
-                initialValues={client}/>
-        }
+                initialValues={client} />
+        </Spinner >
     }
 }
 

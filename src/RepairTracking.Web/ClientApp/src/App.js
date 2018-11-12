@@ -10,6 +10,7 @@ import ClientNew from './modules/clients/container/ClientNew';
 import ClientView from './modules/clients/container/ClientView';
 import LoginPage from './modules/auth/containers/LoginPage';
 import LogoutPage from './modules/auth/containers/LogoutPage';
+import ElementListPage from './modules/element/list/container/ElementListPage'
 
 const Private = (props) => {
     if (localStorage.getItem('JWT_LOGIN')) {
@@ -28,6 +29,7 @@ export default () => (
                 <Route path='/client/edit/:id' component={ClientEdit} />
                 <Route path='/client/show/:id' component={ClientView} />
                 <Route path='/client/new' component={ClientNew} />
+                <Route path='/element' component={ElementListPage} />
                 <Route path="/logout" component={LogoutPage} />
             </Layout>
             <ToastContainer autoClose={2000} />
