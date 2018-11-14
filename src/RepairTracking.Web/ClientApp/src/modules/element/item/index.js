@@ -1,12 +1,12 @@
-import { replace } from 'connected-react-router'
+import { replace } from 'react-router-redux'
 import { toast } from 'react-toastify';
 
-export const LOAD_REMOVE_ORDER = "ORDERS/REMOVE/LOAD_REMOVE_ORDER"
-export const LOADED_REMOVE_ORDER = "ORDERS/REMOVE/LOADED_REMOVE_ORDER"
-export const LOADED_ERROR_ORDER = "ORDERS/REMOVE/LOADED_ERROR_ORDER"
+export const LOAD_VIEW_ELEMENT = "ELEMENTS/VIEW/LOAD_VIEW_ELEMENT"
+export const LOADED_VIEW_ELEMENT = "ELEMENTS/VIEW/LOADED_VIEW_ELEMENT"
+export const LOADED_ERROR_ELEMENT = "ELEMENTS/VIEW/LOADED_ERROR_ELEMENT"
 
 let initialState = {
-    order: null,
+    element: null,
     loading: true,
     error: null,
     isOpen: false
@@ -15,12 +15,12 @@ let initialState = {
 export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
 
-        case LOAD_REMOVE_ORDER:
+        case LOAD_VIEW_ELEMENT:
             return { ...initialState }
-        case LOADED_REMOVE_ORDER:
-            return { ...state, loading: false, order: action.payload, isOpen: true }
-        case LOADED_ERROR_ORDER:
-            return { ...state, loading: false, order: null, error: action.error }
+        case LOADED_VIEW_ELEMENT:
+            return { ...state, loading: false, element: action.payload, isOpen: true }
+        case LOADED_VIEW_ELEMENT:
+            return { ...state, loading: false, element: null, error: action.error }
 
         default:
             return state;
@@ -28,22 +28,22 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export const load = (id) => (dispatch, state) => {
-    dispatch({ type: LOAD_REMOVE_ORDER })
+    dispatch({ type: LOAD_VIEW_ELEMENT })
 
     // TODO: TRAERLO DESDE EL BACKEND PARA VALIDAR
-    let order = state().order.list.orders.find(x => x.id === id);
+    let element = state().element.list.elements.find(x => x.id === id);
 
-    if (order) {
-        dispatch({ type: LOADED_REMOVE_ORDER, payload: order })
+    if (element) {
+        dispatch({ type: LOADED_VIEW_ELEMENT, payload: element })
     } else {
         // TODO: ERROR. toast
-        dispatch(replace('/order'));
-        toast.warn("No se puede editar el pedido seleccionado")
+        dispatch(replace('/element'));
+        //toast.warn("No se puede editar el pedido seleccionado")
     }
 }
 
 export const goBack = () => dispatch => {
     // TODO: mensaje cancelada
-    dispatch({ type: LOAD_REMOVE_ORDER })
-    dispatch(replace('/order'));
+    dispatch({ type: LOAD_VIEW_ELEMENT })
+    dispatch(replace('/element'));
 }

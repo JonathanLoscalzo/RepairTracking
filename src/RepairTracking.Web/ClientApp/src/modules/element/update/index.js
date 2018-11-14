@@ -93,6 +93,7 @@ export const update = (element) => (dispatch) => {
 
     api.put(`element/${element.id}`, element)
         .then((response) => {
+            debugger;
             dispatch({ type: RESPONSE_UPDATE_ELEMENTS, payload: response.data })
             dispatch(replace('/element'));
             toast.success("Pedido Modificado")
@@ -118,5 +119,5 @@ export const load = (id) => (dispatch, state) => {
 
 export const goBack = () => dispatch => {
     dispatch(replace('/element'));
-    toast.info("Creación cancelada")
+    toast.info("Modificación Cancelada")
 }

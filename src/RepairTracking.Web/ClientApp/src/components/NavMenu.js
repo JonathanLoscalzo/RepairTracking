@@ -61,6 +61,13 @@ export default class extends React.Component {
                                 </NavLink>
                             </NavItem>
                         </LinkContainer>
+                        <LinkContainer to={'/task'} exact>
+                            <NavItem>
+                                <NavLink>
+                                    <FaHammer /> Tareas Genéricas
+                                </NavLink>
+                            </NavItem>
+                        </LinkContainer>
                     </Nav>
                     <Nav className="ml-auto" navbar>
                         <LinkContainer to={'/logout'} exact>

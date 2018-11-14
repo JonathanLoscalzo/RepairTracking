@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepairTracking.Infrastructure.Data;
 
 namespace RepairTracking.Infrastructure.Migrations
 {
     [DbContext(typeof(RepairTrackingContext))]
-    partial class RepairTrackingContextModelSnapshot : ModelSnapshot
+    [Migration("20181113024113_alter_element_relations")]
+    partial class alter_element_relations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -216,26 +218,6 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.HasIndex("ElementId");
 
                     b.ToTable("Tasks");
-                });
-
-            modelBuilder.Entity("RepairTracking.Core.Entities.TaskGeneric", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Code");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Observations");
-
-                    b.Property<decimal>("Price");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TaskGenerics");
                 });
 
             modelBuilder.Entity("RepairTracking.Core.ValueObjects.Address", b =>

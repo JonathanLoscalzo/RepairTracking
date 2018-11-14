@@ -6,13 +6,15 @@ import { reducer as formReducer } from 'redux-form'
 import client from '../modules/clients';
 import auth from '../modules/auth'
 import element from '../modules/element';
+import task from '../modules/task';
 
 export default function configureStore(history, initialState) {
     const reducers = {
         form: formReducer,
         auth,
         client,
-        element
+        element, 
+        task
     };
 
     const middleware = [

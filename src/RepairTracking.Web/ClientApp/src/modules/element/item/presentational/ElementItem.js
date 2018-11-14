@@ -7,14 +7,13 @@ export default props => {
     return (
         <Wrapper>
             <Modal isOpen={props.isOpen}>
-                <ModalHeader>Eliminar Elemento</ModalHeader>
+                <ModalHeader>Elemento</ModalHeader>
                 <ModalBody>
-                    ¿Desea eliminar el siguiente elemento?
                     <ItemView {...props} />
+
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={props.remove}>Si</Button>{' '}
-                    <Button color="secondary" onClick={props.goBack}>No</Button>
+                    <Button color="primary" onClick={props.goBack}>Volver</Button>{' '}
                 </ModalFooter>
             </Modal>
         </Wrapper >

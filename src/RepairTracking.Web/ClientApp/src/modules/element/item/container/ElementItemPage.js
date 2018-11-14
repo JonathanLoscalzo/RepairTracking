@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Spinner from '../../../common/loading/spinner'
-import OrderItem from '../presentational/OrderItem'
+import ElementItem from '../presentational/ElementItem'
 import { load, goBack } from '../index';
 
-class OrderItemPage extends React.Component {
+class ElementItemPage extends React.Component {
 
     componentWillMount() {
         this.props.load(this.props.match.params.id)
@@ -15,19 +15,19 @@ class OrderItemPage extends React.Component {
     render() {
         return (
             <Spinner loading={this.props.loading}>
-                <OrderItem {...this.props} />
+                <ElementItem {...this.props} />
             </Spinner>
         )
     }
 }
 
-const mapStateToProps = ({ order }) => ({
-    order: order.item.order,
-    loading: order.item.loading,
-    error: order.item.error,
-    isOpen: order.item.isOpen
+const mapStateToProps = ({ element }) => ({
+    element: element.item.element,
+    loading: element.item.loading,
+    error: element.item.error,
+    isOpen: element.item.isOpen
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ load, goBack }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderItemPage)
+export default connect(mapStateToProps, mapDispatchToProps)(ElementItemPage)

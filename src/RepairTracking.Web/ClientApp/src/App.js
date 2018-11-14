@@ -11,6 +11,8 @@ import ClientView from './modules/clients/container/ClientView';
 import LoginPage from './modules/auth/containers/LoginPage';
 import LogoutPage from './modules/auth/containers/LogoutPage';
 import ElementListPage from './modules/element/list/container/ElementListPage'
+import TaskListPage from './modules/task/list/container/TaskListPage'
+
 
 const Private = (props) => {
     if (localStorage.getItem('JWT_LOGIN')) {
@@ -30,6 +32,7 @@ export default () => (
                 <Route path='/client/show/:id' component={ClientView} />
                 <Route path='/client/new' component={ClientNew} />
                 <Route path='/element' component={ElementListPage} />
+                <Route path='/task' component={TaskListPage} />
                 <Route path="/logout" component={LogoutPage} />
             </Layout>
             <ToastContainer autoClose={2000} />

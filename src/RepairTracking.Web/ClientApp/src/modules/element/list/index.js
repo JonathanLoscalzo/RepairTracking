@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 
 import { RESPONSE_CREATE_ELEMENTS } from '../create'
 import { RESPONSE_UPDATE_ELEMENTS } from '../update'
-import { RESPONSE_REMOVE_ELEMENT } from '../remove'
+import { RESPONSE_REMOVE_ELEMENT, REQUEST_REMOVE_ELEMENT } from '../remove'
 
 export const REQUEST_ELEMENTS = 'ELEMENTS/LIST/REQUEST_ELEMENTS'
 export const RESPONSE_ELEMENTS = 'ELEMENTS/LIST/RESPONSE_ELEMENTS'
@@ -24,11 +24,14 @@ export default function reducer(state = initialState, action = {}) {
         case RESPONSE_CREATE_ELEMENTS:
             return { ...state, elements: [...state.elements, action.payload] }
         case RESPONSE_UPDATE_ELEMENTS:
-            diff = _.differenceWith(state.orders, [action.payload], (a, b) => a.id === b.id);
-            return { ...state, orders: [...diff, action.payload] }
+            diff = _.differenceWith(state.elements, [action.payload], (a, b) => a.id === b.id);
+            return { ...state, elements: [...diff, action.payload] }
+
         case RESPONSE_REMOVE_ELEMENT:
-            diff = _.differenceWith(state.orders, [action.payload], (a, b) => a.id === b.id);
-            return { ...state, orders: [...diff] }
+            diff = _.differenceWith(state.elements, [action.payload], (a, b) => a.id === b.id);
+            return { ...state, elements: [...diff], loading: false }
+        case REQUEST_REMOVE_ELEMENT:
+            return { ...state, loading: true }
 
         case REQUEST_ELEMENTS:
             return { ...state, loading: true }

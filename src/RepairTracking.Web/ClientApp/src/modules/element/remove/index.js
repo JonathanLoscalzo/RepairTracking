@@ -1,4 +1,4 @@
-import { replace } from 'connected-react-router'
+import { replace } from 'react-router-redux'
 import { toast } from 'react-toastify';
 
 import api from '../../common/api/';
@@ -12,8 +12,7 @@ export const LOADED_REMOVE_ELEMENT = "ELEMENT/REMOVE/LOADED_REMOVE_ELEMENT"
 export const LOADED_ERROR_ELEMENT = "ELEMENT/REMOVE/LOADED_ERROR_ELEMENT"
 
 let initialState = {
-    order: null,
-    loading: true,
+    element: null,
     error: null,
     isOpen: false
 }
@@ -24,16 +23,16 @@ export default function reducer(state = initialState, action = {}) {
         case LOAD_REMOVE_ELEMENT:
             return { ...initialState }
         case LOADED_REMOVE_ELEMENT:
-            return { ...state, loading: false, order: action.payload, isOpen: true }
+            return { ...state, element: action.payload, isOpen: true }
         case LOADED_ERROR_ELEMENT:
-            return { ...state, loading: false, order: null, error: action.error }
+            return { ...state, element: null, error: action.error }
 
         case REQUEST_REMOVE_ELEMENT:
-            return { ...state, loading: true }
+            return { ...state, }
         case RESPONSE_REMOVE_ELEMENT:
-            return { ...state, loading: false, order: null }
+            return { ...state, element: null }
         case ERROR_REMOVE_ELEMENT:
-            return { ...state, loading: false, error: action.error }
+            return { ...state, error: action.error }
 
         default:
             return state;
@@ -41,13 +40,13 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export const load = (id) => (dispatch, state) => {
-    dispatch({ type: LOAD_REMOVE_ORDER })
+    dispatch({ type: LOAD_REMOVE_ELEMENT })
 
     // TODO: TRAERLO DESDE EL BACKEND PARA VALIDAR
-    let order = state().element.list.elements.find(x => x.id === id);
+    let element = state().element.list.elements.find(x => x.id === id);
 
-    if (order) {
-        dispatch({ type: LOADED_REMOVE_ORDER, payload: order })
+    if (element) {
+        dispatch({ type: LOADED_REMOVE_ELEMENT, payload: element })
     } else {
         dispatch(replace('/element'));
         toast.warn("No se puede editar el pedido seleccionado")
@@ -55,24 +54,22 @@ export const load = (id) => (dispatch, state) => {
 }
 
 export const remove = (id) => (dispatch, state) => {
-    dispatch({ type: REQUEST_REMOVE_ORDER })
-
-    let element = state().order.remove.order;
+    dispatch({ type: REQUEST_REMOVE_ELEMENT })
+    let element = state().element.remove.element;
 
     api.delete(`element/${element.id}`)
         .then(response => {
             toast.success("Elemento eliminado")
-            dispatch(replace('/order'));
-            dispatch({ type: RESPONSE_REMOVE_ELEMENT, payload: order })
+            dispatch(replace('/element'));
+            dispatch({ type: RESPONSE_REMOVE_ELEMENT, payload: element })
         }).catch(() => {
             toast.error("Error al eliminar pedido")
         })
 
-    // TODO: caso de error
 }
 
 export const goBack = () => dispatch => {
     // TODO: mensaje cancelada
-    dispatch({ type: LOAD_REMOVE_ORDER })
+    dispatch({ type: LOAD_REMOVE_ELEMENT })
     dispatch(replace('/element'));
 }

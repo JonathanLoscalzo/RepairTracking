@@ -92,7 +92,6 @@ export const create = (element) => (dispatch) => {
 
     api.post("element", element)
         .then((response) => {
-            debugger;
             dispatch({ type: RESPONSE_CREATE_ELEMENTS, payload: response.data })
             dispatch(replace('/element'));
             toast.success("Pedido creado")

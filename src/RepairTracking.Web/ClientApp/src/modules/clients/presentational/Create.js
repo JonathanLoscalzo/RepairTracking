@@ -12,7 +12,7 @@ const CreateForm = (props) => <ClientForm {...props} typeForm="Crear" />
 const Create = (props) => (
     <Wrapper>
         <Header title='Nuevo Cliente' />
-        <Body title="Crear Cliente">
+        <Body >
             <CreateForm {...props} />
         </Body>
     </Wrapper>

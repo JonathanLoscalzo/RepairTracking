@@ -8,10 +8,9 @@ import ElementList from '../presentational/ElementList'
 import ElementNewPage from '../../create/container/ElementNewPage'
 import ElementUpdatePage from '../../update/container/ElementUpdatePage'
 import ElementRemovePage from '../../remove/container/ElementRemovePage';
+import ElementItemPage from '../../item/container/ElementItemPage';
+
 import { load, goToCreate, goToEdit } from '../index';
-// import OrderItemPage from '../../item/container/OrderItemPage';
-// import OrderNewPage from '../../create/container/OrderCreatePage';
-// import OrderUpdatePage from '../../update/container/OrderUpdatePage';
 
 class ElementListPage extends React.Component {
 
@@ -28,7 +27,7 @@ class ElementListPage extends React.Component {
                     <ElementList {...this.props} />
                 </Switch>
                 <Route path={`${this.props.match.url}/remove/:id`} component={ElementRemovePage} />
-                {/* <Route path={`${this.props.match.url}/view/:id`} component={OrderItemPage} /> */}
+                <Route path={`${this.props.match.url}/view/:id`} component={ElementItemPage} />
             </Spinner>
         )
     }

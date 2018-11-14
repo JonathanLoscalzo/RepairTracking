@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepairTracking.Infrastructure.Data;
 
 namespace RepairTracking.Infrastructure.Migrations
 {
     [DbContext(typeof(RepairTrackingContext))]
-    partial class RepairTrackingContextModelSnapshot : ModelSnapshot
+    [Migration("20181113213333_create_task_generic")]
+    partial class create_task_generic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Spinner from '../../../common/loading/spinner'
-import ElementRemove from '../presentational/ElementRemove'
+import ElementRemove from '../presentational/TaskRemove'
 import { load, remove, goBack } from '../index';
 
 class ElementRemovePage extends React.Component {
@@ -21,11 +21,11 @@ class ElementRemovePage extends React.Component {
     }
 }
 
-const mapStateToProps = ({ element }) => ({
-    element: element.remove.element,
-    loading: element.list.loading,
-    error: element.remove.error,
-    isOpen: element.remove.isOpen
+const mapStateToProps = ({ task }) => ({
+    task: task.remove.task,
+    loading: task.list.loading,
+    error: task.remove.error,
+    isOpen: task.remove.isOpen
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ load, remove, goBack }, dispatch)

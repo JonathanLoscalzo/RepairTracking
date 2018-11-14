@@ -16,8 +16,11 @@ namespace RepairTracking.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Piece>().HasQueryFilter(p => p.IsActive);
+            modelBuilder.Entity<Task>().HasQueryFilter(p => p.IsActive);
         }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<TaskGeneric> TaskGenerics { get; set; }
         public DbSet<Element> Elements { get; set; }
         public DbSet<Piece> Pieces { get; set; }
         public DbSet<Task> Tasks { get; set; }

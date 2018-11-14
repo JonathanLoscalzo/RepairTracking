@@ -4,6 +4,7 @@ namespace RepairTracking.Core.Base
     {
         public string Id { get; set; }
 
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
+
     }
 }
