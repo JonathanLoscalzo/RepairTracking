@@ -19,6 +19,7 @@ namespace RepairTracking.Infrastructure.Data
             modelBuilder.Entity<Piece>().HasQueryFilter(p => p.IsActive);
             modelBuilder.Entity<Task>().HasQueryFilter(p => p.IsActive);
         }
+        
         public DbSet<Client> Clients { get; set; }
         public DbSet<TaskGeneric> TaskGenerics { get; set; }
         public DbSet<Element> Elements { get; set; }
