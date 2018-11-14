@@ -6,18 +6,12 @@ namespace RepairTracking.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<decimal>(
-                name: "Price",
-                table: "TaskGenerics",
-                nullable: false,
-                defaultValue: 0m);
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Price",
-                table: "TaskGenerics");
+
         }
     }
 }

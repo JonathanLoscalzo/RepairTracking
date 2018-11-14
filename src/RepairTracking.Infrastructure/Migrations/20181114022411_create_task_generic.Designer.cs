@@ -9,7 +9,7 @@ using RepairTracking.Infrastructure.Data;
 namespace RepairTracking.Infrastructure.Migrations
 {
     [DbContext(typeof(RepairTrackingContext))]
-    [Migration("20181113213333_create_task_generic")]
+    [Migration("20181114022411_create_task_generic")]
     partial class create_task_generic
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
