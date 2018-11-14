@@ -3,7 +3,7 @@ using RepairTracking.Core.Entities;
 
 namespace RepairTracking.Core.Interfaces.Repositories
 {
-    public interface ITaskRepository : IRepository<TaskGeneric>
+    public interface ITaskRepository : IRepository<TaskCommon>
     {
 
     }

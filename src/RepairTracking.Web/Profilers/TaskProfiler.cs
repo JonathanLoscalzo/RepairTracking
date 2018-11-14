@@ -8,7 +8,7 @@ namespace RepairTracking.Web.Profilers
     {
         public TaskProfiler()
         {
-            CreateMap<TaskGeneric, TaskGenericDto>().ReverseMap();
+            CreateMap<TaskCommon, TaskGenericDto>().ReverseMap();
         }
     }
 }

@@ -4,10 +4,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepairTracking.Infrastructure.Migrations
 {
-    public partial class create_authentication_user : Migration
+    public partial class initial_migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Address",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Street = table.Column<string>(nullable: true),
+                    Number = table.Column<int>(nullable: true),
+                    Floor = table.Column<int>(nullable: true),
+                    Depto = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Address", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -45,6 +61,52 @@ namespace RepairTracking.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Document",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Type = table.Column<int>(nullable: false),
+                    Number = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Document", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Elements",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Code = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Brand = table.Column<string>(nullable: true),
+                    Observations = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Elements", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TaskGenerics",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Code = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Observations = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskGenerics", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +215,81 @@ namespace RepairTracking.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Clients",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Firstname = table.Column<string>(nullable: true),
+                    Lastname = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    DocumentId = table.Column<string>(nullable: true),
+                    AddressId = table.Column<string>(nullable: true),
+                    Cellphone = table.Column<string>(nullable: true),
+                    Telephone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clients_Address_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Address",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Clients_Document_DocumentId",
+                        column: x => x.DocumentId,
+                        principalTable: "Document",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pieces",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Code = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    ElementId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pieces", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pieces_Elements_ElementId",
+                        column: x => x.ElementId,
+                        principalTable: "Elements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tasks",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    Code = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    ElementId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tasks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tasks_Elements_ElementId",
+                        column: x => x.ElementId,
+                        principalTable: "Elements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -189,6 +326,26 @@ namespace RepairTracking.Infrastructure.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Clients_AddressId",
+                table: "Clients",
+                column: "AddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Clients_DocumentId",
+                table: "Clients",
+                column: "DocumentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pieces_ElementId",
+                table: "Pieces",
+                column: "ElementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tasks_ElementId",
+                table: "Tasks",
+                column: "ElementId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -209,10 +366,31 @@ namespace RepairTracking.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Pieces");
+
+            migrationBuilder.DropTable(
+                name: "TaskGenerics");
+
+            migrationBuilder.DropTable(
+                name: "Tasks");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Address");
+
+            migrationBuilder.DropTable(
+                name: "Document");
+
+            migrationBuilder.DropTable(
+                name: "Elements");
         }
     }
 }

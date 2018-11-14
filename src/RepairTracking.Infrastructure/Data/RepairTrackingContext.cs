@@ -21,7 +21,7 @@ namespace RepairTracking.Infrastructure.Data
         }
         
         public DbSet<Client> Clients { get; set; }
-        public DbSet<TaskGeneric> TaskGenerics { get; set; }
+        public DbSet<TaskCommon> TaskGenerics { get; set; }
         public DbSet<Element> Elements { get; set; }
         public DbSet<Piece> Pieces { get; set; }
         public DbSet<Task> Tasks { get; set; }

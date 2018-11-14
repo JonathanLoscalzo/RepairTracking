@@ -218,7 +218,7 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("RepairTracking.Core.Entities.TaskGeneric", b =>
+            modelBuilder.Entity("RepairTracking.Core.Entities.TaskCommon", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();

@@ -9,8 +9,8 @@ using RepairTracking.Infrastructure.Data;
 namespace RepairTracking.Infrastructure.Migrations
 {
     [DbContext(typeof(RepairTrackingContext))]
-    [Migration("20181111174741_create_element_and_pieces_tasks")]
-    partial class create_element_and_pieces_tasks
+    [Migration("20181114032344_initial_migration")]
+    partial class initial_migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,7 +141,7 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<string>("Firstname");
 
-                    b.Property<string>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Lastname");
 
@@ -165,7 +165,7 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<string>("Code");
 
-                    b.Property<string>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Name");
 
@@ -185,7 +185,7 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<string>("ElementId");
 
-                    b.Property<string>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Name");
 
@@ -207,7 +207,7 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<string>("ElementId");
 
-                    b.Property<string>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Name");
 
@@ -220,6 +220,26 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.ToTable("Tasks");
                 });
 
+            modelBuilder.Entity("RepairTracking.Core.Entities.TaskCommon", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Observations");
+
+                    b.Property<decimal>("Price");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskGenerics");
+                });
+
             modelBuilder.Entity("RepairTracking.Core.ValueObjects.Address", b =>
                 {
                     b.Property<string>("Id")
@@ -229,7 +249,7 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<int?>("Floor");
 
-                    b.Property<string>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<int?>("Number");
 
@@ -245,7 +265,7 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<long>("Number");
 
@@ -364,14 +384,14 @@ namespace RepairTracking.Infrastructure.Migrations
 
             modelBuilder.Entity("RepairTracking.Core.Entities.Piece", b =>
                 {
-                    b.HasOne("RepairTracking.Core.Entities.Element")
+                    b.HasOne("RepairTracking.Core.Entities.Element", "Element")
                         .WithMany("Pieces")
                         .HasForeignKey("ElementId");
                 });
 
             modelBuilder.Entity("RepairTracking.Core.Entities.Task", b =>
                 {
-                    b.HasOne("RepairTracking.Core.Entities.Element")
+                    b.HasOne("RepairTracking.Core.Entities.Element", "Element")
                         .WithMany("Tasks")
                         .HasForeignKey("ElementId");
                 });

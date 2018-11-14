@@ -4,7 +4,7 @@ using RepairTracking.Infrastructure.Data;
 
 namespace RepairTracking.Infrastructure.Repositories
 {
-    public class TaskRepository : Repository<TaskGeneric>, ITaskRepository
+    public class TaskRepository : Repository<TaskCommon>, ITaskRepository
     {
         public TaskRepository(RepairTrackingContext dbContext) : base(dbContext)
         {

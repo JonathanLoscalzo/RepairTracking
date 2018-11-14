@@ -60,14 +60,14 @@ namespace RepairTracking.Web.Controllers
                 return BadRequest(modelState: ModelState);
             }
 
-            var created = this.repository.Add(this.mapper.Map<TaskGeneric>(task));
+            var created = this.repository.Add(this.mapper.Map<TaskCommon>(task));
             return CreatedAtAction(nameof(Get), new { id = created.Id }, this.mapper.Map<TaskGenericDto>(created));
         }
 
         [HttpPut("{id}")]
         public ActionResult Update(TaskGenericDto task)
         {
-            this.repository.Update(this.mapper.Map<TaskGeneric>(task));
+            this.repository.Update(this.mapper.Map<TaskCommon>(task));
             return Ok(this.mapper.Map<TaskGenericDto>(task));
         }
     }
