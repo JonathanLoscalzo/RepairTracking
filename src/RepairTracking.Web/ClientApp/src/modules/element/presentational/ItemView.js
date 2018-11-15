@@ -29,12 +29,12 @@ export default (props) => {
                     <ul className="list-group">
                         {props.element.tasks.map((x, i) => (
                             <li key={i} className="list-group-item">
-                                Tarea: {x.name} - Cantidad: {x.price}</li>))}
+                                Tarea: {x.name} - Precio: {'$' + x.price}</li>))}
                     </ul>
                     <ul className="list-group">
                         {props.element.pieces.map((x, i) => (
                             <li key={i} className="list-group-item">
-                                Pieza: {x.name} - Precio: {x.price}</li>))}
+                                Pieza: {x.name} - Precio: {'$' + x.price}</li>))}
                     </ul>
                 </Fragment>)}
         </div>)

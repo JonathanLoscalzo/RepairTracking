@@ -51,6 +51,7 @@ const columns = [
                 Elemento
               </div>
         ),
+        width:350,
         accessor: 'name',
         Cell: props => props.value
     },
@@ -64,10 +65,10 @@ const columns = [
               </div>
         ),
         accessor: 'brand',
-        width:150,
+        width:350,
         Cell: props => props.value
     },
-    {
+/*    {
         Header: () => (
             <div style={{
                 textAlign: "left",
@@ -92,7 +93,7 @@ const columns = [
         accessor: 'tasks',
         width:150,
         Cell: props => { return props.value.length }
-    },
+    },*/
     {
         Header: () => (
             <div style={{
