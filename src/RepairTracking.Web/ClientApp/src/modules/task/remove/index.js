@@ -49,7 +49,7 @@ export const load = (id) => (dispatch, state) => {
         dispatch({ type: LOADED_REMOVE_TASK, payload: task })
     } else {
         dispatch(replace('/task'));
-        toast.warn("No se puede editar el pedido seleccionado")
+        toast.warn("No se puede editar la tarea seleccionada")
     }
 }
 
@@ -59,11 +59,11 @@ export const remove = (id) => (dispatch, state) => {
 
     api.delete(`task/${task.id}`)
         .then(response => {
-            toast.success("tasko eliminado")
+            toast.success("Tarea eliminada")
             dispatch(replace('/task'));
             dispatch({ type: RESPONSE_REMOVE_TASK, payload: task })
         }).catch(() => {
-            toast.error("Error al eliminar pedido")
+            toast.error("Error al eliminar la tarea")
         })
 
 }

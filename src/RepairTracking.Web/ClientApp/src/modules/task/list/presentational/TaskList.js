@@ -28,6 +28,12 @@ export default props => {
                             showPageSizeOptions= {false}
                             pageText= "Página"
                             ofText= "de"
+                            defaultSorted={[
+                                {
+                                id: "code",
+                                asc: true
+                                }
+                            ]}
                         />
                     </Col>
             </Body>
