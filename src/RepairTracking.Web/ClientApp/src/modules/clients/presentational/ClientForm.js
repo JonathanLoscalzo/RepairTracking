@@ -4,9 +4,9 @@ import { Field, FormSection, Form } from 'redux-form';
 
 import RenderField from '../../common/inputs/RenderField';
 import RenderSelectableField from '../../common/inputs/Selectable';
+import RenderFieldTel from '../../common/inputs/RenderFieldTelephone';
 
 const options = [
-    { value: '-1', label: 'Elija una opción' },
     { value: '0', label: 'DNI' },
     { value: '1', label: 'PASAPORTE' },
 ]
@@ -65,10 +65,10 @@ export default ({ submitting, handleSubmit, cancel, typeForm }) => {
         </Row> */}
         <Row>
             <FormGroup className="col-md-6">
-                <Field label="Teléfono celular *" name="cellphone" placeholder="Teléfono celular" component={RenderField} type="text" />
+                <Field label="Teléfono celular *" name="cellphone" placeholder="Teléfono celular" component={RenderFieldTel} type="text" />
             </FormGroup>
             <FormGroup className="col-md-6">
-                <Field label="Teléfono adicional" name="telephone" placeholder="Teléfono adicional" component={RenderField} type="text" />
+                <Field label="Teléfono adicional" name="telephone" placeholder="Teléfono adicional" component={RenderFieldTel} type="text" />
             </FormGroup>
         </Row>
         <div className="clearfix">

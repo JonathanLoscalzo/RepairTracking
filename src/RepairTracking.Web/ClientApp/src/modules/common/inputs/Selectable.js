@@ -3,7 +3,10 @@ import {
     Input
 } from 'reactstrap';
 
-const mapToChildren = (options) => options.map((x, i) => <option key={i} {...x}>{x.label}</option>)
+
+
+const mapToChildren = (options) => options.map((x, i) => (
+<option key={i} {...x}>{x.label}</option>))
 
 const renderField = (props) => {
     const { input, label, type, options, meta: { touched, error } } = props;
@@ -13,12 +16,11 @@ const renderField = (props) => {
                 <label className="control-label" htmlFor={input.name}>{label}</label>
                 <div>
                     <div >
-                        <Input valid={touched && !error} invalid={touched && error} {...input} {...props} children={mapToChildren(options)} />
+                        <Input valid={touched && !error} invalid={touched && error} {...input} {...props}>
+                            <option key={1} selected value="0">DNI</option>
+                            <option key={2} value="1">Pasaporte</option>)
+                        </Input>
                     </div>
-                    {touched
-                        && ((error
-                            && <small className="text-danger">{error}</small>
-                        ))}
                 </div>
             </div>
         </Fragment>

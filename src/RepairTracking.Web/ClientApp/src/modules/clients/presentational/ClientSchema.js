@@ -14,9 +14,7 @@ const schema = yup
             .email(messages.EMAIL)
             .required(messages.REQUIRED),
         document: yup.object().shape({
-            type: yup.string()
-                .notOneOf(['-1'], messages.OTHER)
-                .required(messages.REQUIRED),
+            type: yup.string().nullable(),
             number: yup.string().nullable()
                 .matches(/^[0-9]*$/, messages.NUMERIC)
                 .required(messages.REQUIRED)
@@ -37,9 +35,7 @@ const schema = yup
                 .nullable(true)
                 .typeError(messages.NUMERIC),
         }),
-        cellphone: yup.number()
-            .format()
-            .typeError(messages.NUMERIC)
+        cellphone: yup.string()
             .required(messages.REQUIRED)
     })
 
