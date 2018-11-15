@@ -4,14 +4,18 @@ import moment from 'moment';
 
 export default (props) => {
     let items = [];
+    console.log(props.element);
+    let traduccion = {code: 'Código', name: 'Nombre', brand: 'Marca', observations:'Observaciones'};
     for (const x in props.element) {
         if (!Array.isArray(props.element[x])) {
-            items.push((
-                <div className="col-4 border">
-                    <dt>{x}</dt>
-                    <dl> {props.element[x]}</dl>
-                </div>
-            ));
+            if(x != 'id'){
+                items.push((
+                    <div className="col-4 border">
+                        <dt>{traduccion[x]}</dt>
+                        <dl> {props.element[x]}</dl>
+                    </div>
+                ));   
+            }
         }
     }
 

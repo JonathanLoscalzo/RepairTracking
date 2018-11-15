@@ -30,28 +30,67 @@ const renderToolbar = ({ ...props }) => {
 
 const columns = [
     {
-        Header: 'Código',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Código
+              </div>
+        ),
         accessor: 'code',
+        width:150,
         Cell: props => props.value
     },
     {
-        Header: 'Elemento',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Elemento
+              </div>
+        ),
         accessor: 'name',
         Cell: props => props.value
     },
     {
-        Header: 'Cantidad Piezas',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Cantidad Piezas
+              </div>
+        ),
         accessor: 'pieces',
+        width:150,
         Cell: props => props.value.length
     },
     {
-        Header: 'Cantidad Tareas',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Cantidad Tareas
+              </div>
+        ),
         accessor: 'tasks',
+        width:150,
         Cell: props => { return props.value.length }
     },
     {
-        Header: 'Acciones',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Acciones
+              </div>
+        ),
         accessor: 'id',
+        width:150,
         Cell: renderToolbar
     }
 ]

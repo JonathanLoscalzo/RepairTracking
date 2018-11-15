@@ -13,7 +13,8 @@ const renderToolbar = ({ ...props }) => {
         </Link>
     )
 
-    return <span>
+    return <div style={{justifyContent:'center',
+                        marginLeft: '40px'}}>
         <Link to={`/task/view/${props.value}`}>
             <button>
                 <FaSearch />
@@ -25,28 +26,60 @@ const renderToolbar = ({ ...props }) => {
                 <FaTrash />
             </button>
         </Link>
-    </span>
+    </div>
 }
 
 const columns = [
     {
-        Header: 'Código',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Código
+              </div>
+        ),
         accessor: 'code',
+        width: 150,
         Cell: props => props.value
     },
     {
-        Header: 'Nombre',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Nombre
+              </div>
+        ),
         accessor: 'name',
+        width: 450,
         Cell: props => props.value
     },
     {
-        Header: 'Precio',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Precio
+              </div>
+        ),
         accessor: 'price',
+        width: 150,
         Cell: props => props.value
     },
     {
-        Header: 'Acciones',
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Acciones
+              </div>
+        ),
         accessor: 'id',
+        width: 150,
         Cell: renderToolbar
     }
 ]

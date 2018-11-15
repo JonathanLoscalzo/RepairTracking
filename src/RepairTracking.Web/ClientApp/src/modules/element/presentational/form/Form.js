@@ -34,9 +34,9 @@ export default props => {
                         <FormGroup className="col-6">
                             <fieldset>
                                 <legend>Información</legend>
-                                <Field label="Código" name="code" placeholder="Código" component={RenderField} type="text" />
-                                <Field label="Nombre" name="name" placeholder="Nombre" component={RenderField} type="text" />
-                                <Field label="Marca" name="brand" placeholder="Marca" component={RenderField} type="text" />
+                                <Field label="Código (*)" name="code" placeholder="Código" component={RenderField} type="text" />
+                                <Field label="Nombre (*)" name="name" placeholder="Nombre" component={RenderField} type="text" />
+                                <Field label="Marca (*)" name="brand" placeholder="Marca" component={RenderField} type="text" />
                                 <Field label="Observaciones" name="observations" placeholder="Apellido" component={RenderField} type="textarea" />
                             </fieldset>
                         </FormGroup>

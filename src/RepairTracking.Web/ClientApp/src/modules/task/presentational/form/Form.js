@@ -22,9 +22,9 @@ export default props => {
                         <FormGroup className="col-6">
                             <fieldset>
                                 <legend>Información</legend>
-                                <Field label="Código" name="code" placeholder="Código" component={RenderField} type="text" />
-                                <Field label="Nombre" name="name" placeholder="Nombre" component={RenderField} type="text" />
-                                <Field label="Precio" name="price" placeholder="Precio" component={RenderField} type="text" />
+                                <Field label="Código (*)" name="code" placeholder="Código" component={RenderField} type="text" />
+                                <Field label="Nombre (*)" name="name" placeholder="Nombre" component={RenderField} type="text" />
+                                <Field label="Precio (*)" name="price" placeholder="Precio" component={RenderField} type="text" />
                                 <Field label="Observaciones" name="observations" placeholder="Observaciones" component={RenderField} type="textarea" />
                             </fieldset>
                         </FormGroup>

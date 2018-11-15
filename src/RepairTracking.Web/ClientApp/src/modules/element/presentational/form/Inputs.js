@@ -36,14 +36,14 @@ const InputRow = ({ member, index, fields, remove }) => {
                             name={`${member}.name`}
                             type="text"
                             component={renderField}
-                            label={`Nombre`} />
+                            label={`Nombre (*)`} />
                     </div>
                     <div className="col-3">
                         <Field
                             name={`${member}.price`}
                             type="text"
                             component={renderField}
-                            label={`Precio`} />
+                            label={`Precio (*)`} />
                     </div>
                 </div>
             </div>

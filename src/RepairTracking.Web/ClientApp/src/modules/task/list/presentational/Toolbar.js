@@ -2,7 +2,7 @@ import React from 'react'
 import { MdCreateNewFolder } from 'react-icons/md'
 
 const NuevaTarea = ({ goToCreate }) => (
-    <div className="col-12 table-toolbar mb-2 ml-auto">
+    <div style={{marginLeft: '1275px', marginBottom: "10px"}}>
         <button
             onClick={() => goToCreate()}
             type="button"

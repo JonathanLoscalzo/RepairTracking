@@ -16,6 +16,6 @@ export default props => {
                     <Button color="primary" onClick={props.goBack}>Volver</Button>{' '}
                 </ModalFooter>
             </Modal>
-        </Wrapper >
+        </Wrapper>
     )
 }
