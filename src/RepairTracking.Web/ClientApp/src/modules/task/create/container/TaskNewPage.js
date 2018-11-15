@@ -26,7 +26,7 @@ class TaskNewPage extends React.Component {
             <Spinner loading={this.props.loading}>
                 <CreateForm
                     {...this.props}
-                    title="Nuevo"
+                    title="Nueva Tarea Genérica"
                     initialValues={this.props.element}
                     onSubmit={(values) => { this.props.create(values); }}
                 />

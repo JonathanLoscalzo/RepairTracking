@@ -39,7 +39,7 @@ const columns = [
               </div>
         ),
         accessor: 'code',
-        width:150,
+        width:125,
         Cell: props => props.value
     },
     {
@@ -52,6 +52,19 @@ const columns = [
               </div>
         ),
         accessor: 'name',
+        Cell: props => props.value
+    },
+    {
+        Header: () => (
+            <div style={{
+                textAlign: "left",
+                fontWeight: 'bold'
+            }}>
+                Marca
+              </div>
+        ),
+        accessor: 'brand',
+        width:150,
         Cell: props => props.value
     },
     {

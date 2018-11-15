@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { FaPlusCircle } from 'react-icons/fa';
 import { FieldArray, Field } from 'redux-form';
-import { Row, FormGroup, Button } from 'reactstrap'
+import { Row, FormGroup, Button, Col } from 'reactstrap'
 
 import FormToolbar from './Toolbar';
 
@@ -19,15 +19,18 @@ export default props => {
             <Body >
                 <form onSubmit={handleSubmit}>
                     <Row>
-                        <FormGroup className="col-6">
-                            <fieldset>
-                                <legend>Información</legend>
-                                <Field label="Código (*)" name="code" placeholder="Código" component={RenderField} type="text" />
-                                <Field label="Nombre (*)" name="name" placeholder="Nombre" component={RenderField} type="text" />
-                                <Field label="Precio (*)" name="price" placeholder="Precio" component={RenderField} type="text" />
-                                <Field label="Observaciones" name="observations" placeholder="Observaciones" component={RenderField} type="textarea" />
-                            </fieldset>
-                        </FormGroup>
+                        <Col md={{size:6, offset:3}}>
+                            <FormGroup>
+                                <fieldset>
+                                    <legend>Información</legend>
+                                    <Field label="Código (*)" name="code" placeholder="Código" component={RenderField} type="text" />
+                                    <Field label="Nombre (*)" name="name" placeholder="Nombre" component={RenderField} type="text" />
+                                    <Field label="Precio (*)" name="price" placeholder="Precio" component={RenderField} type="text" />
+                                    <Field label="Observaciones" name="observations" placeholder="Observaciones" component={RenderField} type="textarea" />
+                                </fieldset>
+                            </FormGroup>
+                        </Col>
+                        
                     </Row>
                     <FormToolbar {...props} />
                 </form>
