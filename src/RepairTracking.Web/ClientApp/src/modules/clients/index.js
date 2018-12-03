@@ -33,7 +33,7 @@ const RETRIEVE_ERROR = 'clients/RETRIEVE_ERROR';
 
 // Reducer
 const initialState = {
-    selectedClient: null,
+    selectedClient: {},
     clients: [],
     loading: true
 }
@@ -100,6 +100,28 @@ export const load = () => dispatch => {
             toast.error('Ocurrió un error recuperando los clientes, intente nuevamente');
             dispatch({ type: LOAD_ERROR, error: 'Ocurrió un error' })
         });
+}
+
+export const loadClient = (id) => dispatch => {
+    dispatch({type: RETRIEVE_REQUEST});
+
+    const url = 'client/' + id;
+    api.get(url)
+        .then((response) => {
+            if (response.status == 404) {
+                console.log("no existe");
+                toast.error('No existe el cliente que intenta recuperar');
+                dispatch({ type: RETRIEVE_ERROR });
+            } else {
+                dispatch({ type: RETRIEVE_RESPONSE, payload: response.data });
+            }
+        })
+        .catch(() => {
+            console.log("error");
+            toast.error('Ocurrió un error recuperando los datos del cliente');
+            dispatch({ type: LOAD_ERROR, error: 'Ocurrió un error' })
+        });
+
 }
 
 export const goToEdit = (id) => dispatch => {
@@ -198,4 +220,8 @@ export const remove = id => dispatch => {
     // call api
     //return api
     dispatch({ type: REMOVE_RESPONSE, payload: { id } })
+}
+
+export const goToRepair = id => dispatch => {
+    dispatch(push('/repair/' + id));
 }

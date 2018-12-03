@@ -4,7 +4,7 @@ import { Body, Header, Wrapper } from '../../common/page'
 import EmptyRow from './components/EmptyRow'
 import Row from './components/Row'
 
-const List = ({ clients, goToEdit, goToCreate, goToShow }) => {
+const List = ({ clients, goToEdit, goToCreate, goToShow, goToRepair }) => {
     return (
         <Wrapper>
             <Header title={'Listado de Clientes'} />
@@ -34,7 +34,9 @@ const List = ({ clients, goToEdit, goToCreate, goToShow }) => {
                                         index={index}
                                         key={index}
                                         goToEdit={(id) => goToEdit(id)}
-                                        goToShow={(id) => goToShow(id)} />
+                                        goToShow={(id) => goToShow(id)}
+                                        goToRepair={goToRepair}
+                                     />
                                 ))
                                 : <EmptyRow />}
 

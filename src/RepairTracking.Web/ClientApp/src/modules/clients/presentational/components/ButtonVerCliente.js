@@ -2,7 +2,7 @@ import React from 'react';
 import { FaList } from 'react-icons/fa'
 import { UncontrolledTooltip as Tooltip } from 'reactstrap'
 
-const delay = {show: 500, hide:0};
+const delay = {show: 400, hide:0};
 
 const ButtonVerCliente = ({ goToShow, id }) => (
     <div>

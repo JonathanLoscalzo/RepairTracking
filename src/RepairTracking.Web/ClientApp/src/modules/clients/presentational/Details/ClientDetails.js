@@ -1,27 +1,12 @@
-import React from 'react';
-import './styles/view.css';
-import { CardHeader, Table } from 'reactstrap';
-import { Nav, NavItem, NavLink, Button, Row, Col } from 'reactstrap';
+import React from 'react'
+import {CardHeader, Table, Row, Col, Button} from 'reactstrap';
 import { FaEdit } from "react-icons/fa";
-import { Body, Header, Wrapper } from '../../common/page'
 
-const View = (props) => {
-    const { client } = props;
-    return (
-        <Wrapper>
-            <Header title='Detalles del cliente' />
-            <Body>
-                <Nav tabs className="my-4">
-                    <NavItem>
-                        <NavLink className="active">
-                            Detalles</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink>
-                            Reparaciones</NavLink>
-                    </NavItem>
-                </Nav>
-                <div className="text-center header">
+export default function ClientDetails(props) {
+  let { client } = props;
+  return (
+      <React.Fragment>
+        <div className="text-center header">
                     <h2>{client.firstname} {' '} {client.lastname}</h2><FaEdit onClick={() => props.goToEdit(client.id)} />
                 </div>
                 <CardHeader className="bg-default w-25">Datos personales</CardHeader>
@@ -98,9 +83,7 @@ const View = (props) => {
                 <div className="clearfix mb-3 mr-4">
                     <Button color="primary" className="float-right" onClick={() => props.cancel()}>Volver</Button>
                 </div>
-            </Body>
-        </Wrapper>
-    )
+      </React.Fragment>
+          
+  )
 }
-
-export default View;

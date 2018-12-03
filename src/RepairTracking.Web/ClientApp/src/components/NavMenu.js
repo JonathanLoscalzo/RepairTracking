@@ -47,9 +47,9 @@ export default class extends React.Component {
                                 </NavLink>
                             </NavItem>
                         </LinkContainer>
-                        <LinkContainer to={'/repairs'} exact>
+                        <LinkContainer to={'/repair'} exact>
                             <NavItem>
-                                <NavLink disabled>
+                                <NavLink>
                                     <FaHammer /> Reparaciones
                                 </NavLink>
                             </NavItem>

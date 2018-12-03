@@ -12,6 +12,7 @@ import LoginPage from './modules/auth/containers/LoginPage';
 import LogoutPage from './modules/auth/containers/LogoutPage';
 import ElementListPage from './modules/element/list/container/ElementListPage'
 import TaskListPage from './modules/task/list/container/TaskListPage'
+import RepairListPage from './modules/repair/list/container/RepairListPage';
 
 
 const Private = (props) => {
@@ -32,6 +33,7 @@ export default () => (
                 <Route path='/client/show/:id' component={ClientView} />
                 <Route path='/client/new' component={ClientNew} />
                 <Route path='/element' component={ElementListPage} />
+                <Route path='/repair' component={RepairListPage} />
                 <Route path='/task' component={TaskListPage} />
                 <Route path="/logout" component={LogoutPage} />
             </Layout>

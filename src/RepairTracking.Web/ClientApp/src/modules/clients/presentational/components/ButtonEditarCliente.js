@@ -2,12 +2,12 @@ import React from 'react';
 import { FaEdit } from 'react-icons/fa'
 import { UncontrolledTooltip as Tooltip } from 'reactstrap'
 
-const delay = {show: 500, hide:0};
+const delay = {show: 400, hide:0};
 
 const ButtonEditarCliente = ({ goToEdit, id }) => (
     <div>
         <span href="#" id={'miraElOtroId' + id}>
-            <button type="button" className="mr-2 mb-2 mt-2 btn btn-primary btn-sm" onClick={() => goToEdit(id)}>
+            <button type="button" className="mr-1 mb-2 mt-2 btn btn-primary btn-sm" onClick={() => goToEdit(id)}>
                 <FaEdit />
             </button>
         </span>
