@@ -4,7 +4,7 @@ DEBE exportar por defecto una función llamada reducer().
 DEBE exportar sus creadores de acciones como funciones.
 DEBE definir sus tipos de acciones en el formato modulo-app/reducer/ACTION_TYPE.
 PUEDE exportar sus tipos de acciones como UPPER_SNAKE_CASE si otro reducer la va a usar o si esta publicada como una librería reusable.*/
-import { push, replace } from 'react-router-redux';
+import { push, replace, go } from 'react-router-redux';
 import api from '../common/api';
 import { toast } from 'react-toastify';
 
@@ -109,7 +109,7 @@ export const loadClient = (id) => dispatch => {
     api.get(url)
         .then((response) => {
             if (response.status == 404) {
-                console.log("no existe");
+                dispatch(go(-1));
                 toast.error('No existe el cliente que intenta recuperar');
                 dispatch({ type: RETRIEVE_ERROR });
             } else {
@@ -117,11 +117,10 @@ export const loadClient = (id) => dispatch => {
             }
         })
         .catch(() => {
-            console.log("error");
+            dispatch(go(-1));
             toast.error('Ocurrió un error recuperando los datos del cliente');
             dispatch({ type: LOAD_ERROR, error: 'Ocurrió un error' })
         });
-
 }
 
 export const goToEdit = (id) => dispatch => {

@@ -53,6 +53,7 @@ export const load = () => (dispatch) => {
             dispatch({ type: RESPONSE_TASKS, payload: response.data })
         })
         .catch((error) => {
+            dispatch(push('/'));
             dispatch({ type: ERROR_TASKS, error: "error" })
         })
 }

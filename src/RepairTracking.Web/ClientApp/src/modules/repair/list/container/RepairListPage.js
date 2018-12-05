@@ -6,6 +6,7 @@ import { loadRepairs } from '../index'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Spinner from '../../../common/loading/spinner';
+import CreateRepairForUser from '../../create/container/CreateRepairForUser'; 
 
 class RepairListPage extends Component {
     componentDidMount(){
@@ -18,6 +19,7 @@ class RepairListPage extends Component {
           <Spinner loading={this.props.loading}>
               <div>
                 <Switch>
+                    <Route path="/repair/new/:userId" component={CreateRepairForUser}/>
                     <Route path="/repair/:userId" render={(props) => (<RepairListForUser repair={this.props.repair} {...props} />)}/>
                     <RepairList title="Reparaciones" repair={this.props.repair} />
                 </Switch>
