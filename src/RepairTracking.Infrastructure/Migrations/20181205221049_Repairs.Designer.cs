@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepairTracking.Infrastructure.Data;
 
 namespace RepairTracking.Infrastructure.Migrations
 {
     [DbContext(typeof(RepairTrackingContext))]
-    partial class RepairTrackingContextModelSnapshot : ModelSnapshot
+    [Migration("20181205221049_Repairs")]
+    partial class Repairs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,9 +191,13 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<decimal>("Price");
 
+                    b.Property<string>("RepairId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ElementId");
+
+                    b.HasIndex("RepairId");
 
                     b.ToTable("Pieces");
                 });
@@ -201,11 +207,7 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<decimal>("Amount");
-
                     b.Property<string>("ClientId");
-
-                    b.Property<string>("Code");
 
                     b.Property<string>("ElementId");
 
@@ -239,9 +241,13 @@ namespace RepairTracking.Infrastructure.Migrations
 
                     b.Property<decimal>("Price");
 
+                    b.Property<string>("RepairId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ElementId");
+
+                    b.HasIndex("RepairId");
 
                     b.ToTable("Tasks");
                 });
@@ -413,6 +419,10 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.HasOne("RepairTracking.Core.Entities.Element", "Element")
                         .WithMany("Pieces")
                         .HasForeignKey("ElementId");
+
+                    b.HasOne("RepairTracking.Core.Entities.Repair")
+                        .WithMany("Pieces")
+                        .HasForeignKey("RepairId");
                 });
 
             modelBuilder.Entity("RepairTracking.Core.Entities.Repair", b =>
@@ -431,6 +441,10 @@ namespace RepairTracking.Infrastructure.Migrations
                     b.HasOne("RepairTracking.Core.Entities.Element", "Element")
                         .WithMany("Tasks")
                         .HasForeignKey("ElementId");
+
+                    b.HasOne("RepairTracking.Core.Entities.Repair")
+                        .WithMany("Tasks")
+                        .HasForeignKey("RepairId");
                 });
 #pragma warning restore 612, 618
         }

@@ -43,6 +43,18 @@ namespace RepairTracking.Web.Controllers
             return Ok(this.mapper.Map<ClientDto>(client));
         }
 
+        [HttpGet, Route("{id}")]
+        public ActionResult<Repair> GetRepairs(string id)
+        {
+            var client = this.repository.GetById(id);
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(client.Repairs);
+        }
+
         [HttpDelete, Route("{id}")]
         public ActionResult Delete(string id)
         {

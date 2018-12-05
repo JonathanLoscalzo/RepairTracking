@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RepairTracking.Core.Base;
 using RepairTracking.Core.ValueObjects;
 
@@ -18,5 +19,6 @@ namespace RepairTracking.Core.Entities
         public string Cellphone { get; set; }
 
         public string Telephone { get; set; }
+        public IEnumerable<Repair> Repairs { get; set; }
     }
 }
