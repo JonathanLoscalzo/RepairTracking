@@ -139,7 +139,7 @@ export const goToEdit = (id) => dispatch => {
             }
         })
         .catch(() => {
-            toast.error('Ocurrió un error');
+            toast.error('Ocurrió un error en editar');
             dispatch({ type: RETRIEVE_ERROR, error: 'Ocurrió un error' })
         });
 }

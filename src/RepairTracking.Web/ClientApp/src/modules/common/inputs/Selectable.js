@@ -18,7 +18,7 @@ const renderField = (props) => {
                     <div >
                         <Input valid={touched && !error} invalid={touched && error} {...input} {...props}>
                             <option key={1} selected value="0">DNI</option>
-                            <option key={2} value="1">Pasaporte</option>)
+                            <option key={2} value="1">Pasaporte</option>
                         </Input>
                     </div>
                 </div>

@@ -61,7 +61,9 @@ export const loadRepairs = () => (dispatch) => {
         element: "computadora",
         observations: "Falta bastante trabajo",
         pieces: [],
-        tasks: []
+        tasks: [],
+        generic: [],
+        client: {/*datos del cliente*/}
     },
     {
         code: "AA2",

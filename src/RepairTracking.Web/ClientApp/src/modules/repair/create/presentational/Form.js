@@ -3,6 +3,7 @@ import { Body, Wrapper, Header } from '../../../common/page'
 import CreatePage1 from './Wizard/CreatePage1';
 import CreatePage2 from './Wizard/CreatePage2';
 import CreatePage3 from './Wizard/CreatePage3';
+import CardContainer from './Wizard/CardContainer';
 
 export default class Form extends Component {
    constructor(props){
@@ -33,9 +34,9 @@ export default class Form extends Component {
       <Wrapper>
             <Header title={title} />
             <Body >
-                { currentPage === 1 && <CreatePage1 {...stateAndDispatchs} onSubmit={() => this.nextPage()} previousPage={() => this.previousPage()} currentPage={currentPage}/> }
-                { currentPage === 2 && <CreatePage2 {...stateAndDispatchs} onSubmit={() => this.nextPage()} previousPage={() => this.previousPage()} /> }
-                { currentPage === 3 && <CreatePage3 {...stateAndDispatchs} onSubmit={onSubmit}  previousPage={() => this.previousPage()} /> }
+                { currentPage === 1 && <CardContainer component={CreatePage1} {...stateAndDispatchs} onSubmit={() => this.nextPage()} previousPage={() => this.previousPage()} currentPage={currentPage}/> }
+                { currentPage === 2 && <CardContainer component={CreatePage2} {...stateAndDispatchs} onSubmit={() => this.nextPage()} previousPage={() => this.previousPage()} /> }
+                { currentPage === 3 && <CardContainer component={CreatePage3} {...stateAndDispatchs} onSubmit={onSubmit}  previousPage={() => this.previousPage()} /> }
             </Body>
         </Wrapper>
     )
