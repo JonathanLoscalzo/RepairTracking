@@ -87,9 +87,10 @@ namespace RepairTracking.Web.Controllers
                 IsActive = true,
                 Status = repair.Status
             };
-            client.Repairs.ToList().Add(rep);
+            var created = repository.Add(rep);
+            client.Repairs.ToList().Add(created);
             clientRepository.Update(client);
-            return CreatedAtAction(nameof(Get), null, rep);
+            return CreatedAtAction(nameof(Get), new { id = created.Id }, rep);
         }
 
         [HttpPut("{id}")]
