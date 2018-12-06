@@ -7,6 +7,7 @@ using RepairTracking.Core.Interfaces.Repositories;
 using RepairTracking.Web.ViewModels.Element;
 using RepairTracking.Core.Entities;
 using System;
+using RepairTracking.Web.ViewModels.Repair;
 
 namespace RepairTracking.Web.Controllers
 {
@@ -16,11 +17,13 @@ namespace RepairTracking.Web.Controllers
     {
         private IMapper mapper;
         private IRepairRepository repository;
+        private IClientRepository clientRepository;
 
-        public RepairController(IMapper mapper, IRepairRepository repository)
+        public RepairController(IMapper mapper, IRepairRepository repository, IClientRepository clientRepository)
         {
             this.mapper = mapper;
             this.repository = repository;
+            this.clientRepository = clientRepository;
         }
 
         [HttpGet]
@@ -64,7 +67,7 @@ namespace RepairTracking.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Repair repair)
+        public ActionResult Create(repairDto repair)
         {
             var random = new Random();
             if (!ModelState.IsValid)
@@ -73,16 +76,17 @@ namespace RepairTracking.Web.Controllers
             }
             repair.Code = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 8)
                                     .Select(s => s[random.Next(s.Length)]).ToArray());
-                                    
-            var created = this.repository.Add(repair);
-            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
+            var client = clientRepository.GetById(repair.Client);
+            client.Repairs.ToList().Add(this.mapper.Map<Repair>(repair));
+            clientRepository.Update(client);
+            return CreatedAtAction(nameof(Get), null, this.mapper.Map<Repair>(repair));
         }
 
         [HttpPut("{id}")]
-        public ActionResult Update(Repair repair)
+        public ActionResult Update(repairDto repair)
         {
-            this.repository.Update(repair);
-            return Ok(repair);
+            this.repository.Update(this.mapper.Map<Repair>(repair));
+            return Ok(this.mapper.Map<Repair>(repair));
         }
     }
 }
