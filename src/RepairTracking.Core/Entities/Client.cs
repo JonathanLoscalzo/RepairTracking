@@ -19,6 +19,6 @@ namespace RepairTracking.Core.Entities
         public string Cellphone { get; set; }
 
         public string Telephone { get; set; }
-        public IEnumerable<Repair> Repairs { get; set; }
+        public IList<Repair> Repairs { get; set; }
     }
 }
