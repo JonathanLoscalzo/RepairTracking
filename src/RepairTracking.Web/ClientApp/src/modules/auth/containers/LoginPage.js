@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Spinner from '../../common/loading/spinner';
 import LoginForm from '../presentational/Login'
+import Tracker from '../presentational/Tracker';
 
 import { login } from '../index';
 

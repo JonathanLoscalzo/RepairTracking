@@ -18,23 +18,7 @@ const Home = props => (
         <div className="wrapper-header">
             <div className="col-lg">
                 <Container>
-                    <CardDeck className="w-75">
-                            <div className="card bg-white border-info cardCustom p-0">
-                                <div className="card-header font-weight-bold">Buscar Reparación</div>
-                                <CardBody className="text-dark">
-                                    <FormGroup>
-                                        <Label for="exampleEmail">Código</Label>
-                                        <Input type="text" name="email" id="exampleEmail" placeholder="Ej: MM1" />
-                                    </FormGroup>
-                                    <Button color="info">Buscar</Button>
-                                </CardBody>
-                            </div>
-                            <Card>
-                                <CardBody>
-                                <CardTitle>Card title</CardTitle>
-                                </CardBody>
-                            </Card>
-                    </CardDeck>
+                    
                 </Container>
                 <Container>
                     <CardDeck className="w-75">

@@ -3,6 +3,7 @@ import { Body, Wrapper, Header } from '../../../common/page'
 import CreatePage1 from './Wizard/CreatePage1';
 import CreatePage2 from './Wizard/CreatePage2';
 import CreatePage3 from './Wizard/CreatePage3';
+import LastStep from './Wizard/LastStep';
 import CardContainer from './Wizard/CardContainer';
 
 export default class Form extends Component {
@@ -36,7 +37,8 @@ export default class Form extends Component {
             <Body >
                 { currentPage === 1 && <CardContainer component={CreatePage1} {...stateAndDispatchs} onSubmit={() => this.nextPage()} previousPage={() => this.previousPage()} currentPage={currentPage}/> }
                 { currentPage === 2 && <CardContainer component={CreatePage2} {...stateAndDispatchs} onSubmit={() => this.nextPage()} previousPage={() => this.previousPage()} /> }
-                { currentPage === 3 && <CardContainer component={CreatePage3} {...stateAndDispatchs} onSubmit={onSubmit}  previousPage={() => this.previousPage()} /> }
+                { currentPage === 3 && <CardContainer component={CreatePage3} {...stateAndDispatchs} onSubmit={(values) => {onSubmit(values); this.nextPage()}}  previousPage={() => this.previousPage()} /> }
+                { currentPage === 4 && <CardContainer component={LastStep} {...stateAndDispatchs} />}    
             </Body>
         </Wrapper>
     )

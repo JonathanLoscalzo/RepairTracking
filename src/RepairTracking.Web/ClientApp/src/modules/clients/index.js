@@ -113,6 +113,7 @@ export const loadClient = (id) => dispatch => {
                 toast.error('No existe el cliente que intenta recuperar');
                 dispatch({ type: RETRIEVE_ERROR });
             } else {
+                console.log("pasa");
                 dispatch({ type: RETRIEVE_RESPONSE, payload: response.data });
             }
         })

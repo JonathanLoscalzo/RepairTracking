@@ -12,7 +12,7 @@ const CreatePage2 = (props) => {
   return (
     <div>
         <form onSubmit={props.handleSubmit}>
-            pagina 2
+            <h4>Futura feature: "Seleccionar piezas/tareas"</h4>
             <FormToolbar {...props} text="Siguiente"/>
         </form>
     </div>

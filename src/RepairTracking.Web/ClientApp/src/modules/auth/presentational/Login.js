@@ -37,7 +37,7 @@ class CreateForm extends React.Component {
                             component={RenderField}
                             type="password" />
                     </FormGroup>
-                    <button type="submit" disabled={submitting} className="btn btn-primary">Sign In</button>
+                    <button type="submit" disabled={submitting} className="btn btn-primary">Iniciar sesión</button>
                 </form>
                 {this.errorMessage()}
             </div>)

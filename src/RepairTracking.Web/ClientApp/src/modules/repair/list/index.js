@@ -1,6 +1,7 @@
 import { push } from 'react-router-redux'
 import api from '../../common/api'
 import * as _ from 'lodash';
+import { toast } from 'react-toastify';
 
 /*import { RESPONSE_CREATE_ELEMENTS } from '../create'
 import { RESPONSE_UPDATE_ELEMENTS } from '../update'
@@ -9,6 +10,9 @@ import { RESPONSE_REMOVE_ELEMENT, REQUEST_REMOVE_ELEMENT } from '../remove'*/
 export const REQUEST_REPAIRS = 'REPAIRS/LIST/REQUEST_REPAIRS'
 export const RESPONSE_REPAIRS = 'REPAIRS/LIST/RESPONSE_REPAIRS'
 export const ERROR_REPAIRS = 'REPAIRS/LIST/ERROR_REPAIRS'
+
+export const REQUEST_USER_REPAIRS = 'REPAIRS/LIST/REQUEST_USER_REPAIRS';
+export const RESPONSE_USER_REPAIRS = 'REPAIRS/LIST/REQUEST_USER_REPAIRS';
 
 let initialState = {
     repairs: [],
@@ -32,7 +36,6 @@ export default function reducer(state = initialState, action = {}) {
             return { ...state, elements: [...diff], loading: false }
         case REQUEST_REMOVE_ELEMENT:
             return { ...state, loading: true }*/
-
         case REQUEST_REPAIRS:
             return { ...state, loading: true }
         case RESPONSE_REPAIRS:
@@ -46,35 +49,62 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export const loadRepairs = () => (dispatch) => {
-    //dispatch({ type: REQUEST_REPAIRS })
-    const url = "element"
-    /*api.get(url)
+    dispatch({ type: REQUEST_REPAIRS })
+    const url = "repair"
+    api.get(url)
         .then((response) => {
             dispatch({ type: RESPONSE_REPAIRS, payload: response.data })
         })
         .catch((error) => {
+            toast.error('error en reparaciones');
             dispatch({ type: ERROR_REPAIRS, error: "error" })
-        })*/
-    let payload = [{
-        code: "MM1",
-        status: "En Proceso",
-        element: "computadora",
-        observations: "Falta bastante trabajo",
-        pieces: [],
-        tasks: [],
-        generic: [],
-        client: {/*datos del cliente*/}
-    },
-    {
-        code: "AA2",
-        status: "En Proceso",
-        element: "motosierra",
-        observations: "Falta bastante trabajo",
-        pieces: [],
-        tasks: []
-    }];
-    dispatch({ type: RESPONSE_REPAIRS, payload: payload})
+        })
+    // let payload = [{
+    //     code: "MM1",
+    //     status: "En Proceso",
+    //     element: "computadora",
+    //     observations: "Falta bastante trabajo",
+    //     pieces: [],
+    //     tasks: [],
+    //     generic: [],
+    //     client: {/*datos del cliente*/}
+    // },
+    // {
+    //     code: "AA2",
+    //     status: "En Proceso",
+    //     element: "motosierra",
+    //     observations: "Falta bastante trabajo",
+    //     pieces: [],
+    //     tasks: []
+    // }];
+    //dispatch({ type: RESPONSE_REPAIRS, payload: payload})
 }
+
+export const load = (code) => dispatch => {
+    const url = "repair/code/" + code;
+    api.get(url)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            toast.error('error en reparaciones');
+            dispatch({ type: ERROR_REPAIRS, error: "error" })
+        })
+} 
+
+export const repairsForUserFunc = (id) => dispatch =>{
+    dispatch({type: REQUEST_REPAIRS})
+
+    const url = "client/GetRepairs/" + id;
+    api.get(url)
+        .then((response) => {
+            dispatch({type: RESPONSE_REPAIRS, payload: response.data});
+        })
+        .catch((error) => {
+            toast.error('error en reparaciones');
+            dispatch({ type: ERROR_REPAIRS, error: "error" })
+        })
+};
 
 export const goToCreate = () => (dispatch) => {
     dispatch(push('/element/new'))

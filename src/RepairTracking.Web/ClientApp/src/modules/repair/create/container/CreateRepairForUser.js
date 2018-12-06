@@ -16,11 +16,12 @@ class CreateRepairForUser extends Component {
   }
 
   render() {
+    const {userId} = this.props.match.params;
     const { loadingCliente, loadingElementos, elements, selectedClient } = this.props;
     return (
       <Spinner loading={ loadingCliente && loadingElementos }>
           <Form elements={elements} client={selectedClient}
-          onSubmit={(values) => { this.props.create(values); this.props.reset('repair/create')}}/>
+          onSubmit={(values) => { this.props.create(values, userId); this.props.reset('repair/create');}}/>
       </Spinner>
     )
   }

@@ -52,7 +52,7 @@ const columns = [
               </div>
         ),
         width:350,
-        accessor: 'element',
+        accessor: 'element.name',
         Cell: props => props.value
     },
     {
