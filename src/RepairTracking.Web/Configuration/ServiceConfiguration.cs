@@ -13,6 +13,7 @@ namespace RepairTracking.Web.Configuration
             services.AddTransient<IClientRepository, ClientRepository>();
             services.AddTransient<IElementRepository, ElementRepository>();
             services.AddTransient<ITaskRepository, TaskRepository>();
+            services.AddTransient<IRepairRepository, RepairRepository>();
             return services;
         }
     }

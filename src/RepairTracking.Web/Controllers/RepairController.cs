@@ -45,7 +45,7 @@ namespace RepairTracking.Web.Controllers
             return Ok(repair);
         }
 
-        [HttpGet, Route("{code}")]
+        [HttpGet, Route("code/{code}")]
         public ActionResult<Repair> GetByCode(string code)
         {
             var repair = this.repository.GetByCode(code);
@@ -67,7 +67,7 @@ namespace RepairTracking.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(repairDto repair)
+        public ActionResult Create([FromBody]repairDto repair)
         {
             var random = new Random();
             if (!ModelState.IsValid)
