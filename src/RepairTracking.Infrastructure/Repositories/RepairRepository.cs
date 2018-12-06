@@ -17,6 +17,7 @@ namespace RepairTracking.Infrastructure.Repositories
         {
             return _dbContext
                 .Set<Repair>()
+                .Include(x => x.Element)
                 .Where(x => x.IsActive)
                 .ToList();
         }

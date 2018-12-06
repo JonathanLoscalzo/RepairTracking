@@ -69,7 +69,7 @@ namespace RepairTracking.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([FromBody]repairDto repair)
+        public ActionResult Create(repairDto repair)
         {
             var random = new Random();
             if (!ModelState.IsValid)
