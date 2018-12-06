@@ -85,7 +85,7 @@ namespace RepairTracking.Web.Controllers
                 Element = elementRepository.GetById(repair.Element),
                 Observations = repair.Observations,
                 IsActive = true,
-                Status = repair.Status
+                Status = "En proceso"
             };
             client.Repairs.Add(rep);
             clientRepository.Update(client);

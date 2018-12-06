@@ -24,7 +24,9 @@ namespace RepairTracking.Infrastructure.Repositories
 
         public Repair GetByCode(string code)
         {
-            return _dbContext.Set<Repair>().FirstOrDefault(e => e.Code == code);
+            return _dbContext.Set<Repair>()
+                    .Include(x => x.Element)
+                    .FirstOrDefault(e => e.Code == code);
         }
 
         // public override void Update(Repair entity)
