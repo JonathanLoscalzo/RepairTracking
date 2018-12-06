@@ -18,12 +18,14 @@ namespace RepairTracking.Web.Controllers
         private IMapper mapper;
         private IRepairRepository repository;
         private IClientRepository clientRepository;
+        private IElementRepository elementRepository;
 
-        public RepairController(IMapper mapper, IRepairRepository repository, IClientRepository clientRepository)
+        public RepairController(IMapper mapper, IRepairRepository repository, IClientRepository clientRepository, IElementRepository elementRepository)
         {
             this.mapper = mapper;
             this.repository = repository;
             this.clientRepository = clientRepository;
+            this.elementRepository = elementRepository;
         }
 
         [HttpGet]
@@ -77,9 +79,18 @@ namespace RepairTracking.Web.Controllers
             repair.Code = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 8)
                                     .Select(s => s[random.Next(s.Length)]).ToArray());
             var client = clientRepository.GetById(repair.Client);
-            client.Repairs.ToList().Add(this.mapper.Map<Repair>(repair));
+            var rep = new Repair() {
+                Amount = repair.Amount,
+                Code = repair.Code,
+                Element = elementRepository.GetById(repair.Element),
+                Observations = repair.Observations,
+                IsActive = true,
+                Status = repair.Status,
+                Client = client
+            };
+            client.Repairs.ToList().Add(rep);
             clientRepository.Update(client);
-            return CreatedAtAction(nameof(Get), null, this.mapper.Map<Repair>(repair));
+            return CreatedAtAction(nameof(Get), null, rep);
         }
 
         [HttpPut("{id}")]
