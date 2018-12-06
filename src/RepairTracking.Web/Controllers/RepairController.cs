@@ -76,7 +76,7 @@ namespace RepairTracking.Web.Controllers
             {
                 return BadRequest(modelState: ModelState);
             }
-            repair.Code = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 8)
+            repair.Code = new string(Enumerable.Repeat("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 4)
                                     .Select(s => s[random.Next(s.Length)]).ToArray());
             var client = clientRepository.GetById(repair.Client);
             var rep = new Repair() {
@@ -92,11 +92,21 @@ namespace RepairTracking.Web.Controllers
             return CreatedAtAction(nameof(Get), null, rep);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{code}")]
         public ActionResult Update(repairDto repair)
         {
-            this.repository.Update(this.mapper.Map<Repair>(repair));
-            return Ok(this.mapper.Map<Repair>(repair));
+            var original = repository.GetByCode(repair.Code);
+            var rep = new Repair() {
+                Amount = repair.Amount,
+                Code = original.Code,
+                IsActive = original.IsActive,
+                Id = original.Id,
+                Element = elementRepository.GetById(repair.Element),
+                Observations = repair.Observations,
+                Status = repair.Status
+            };
+            this.repository.Update(rep);
+            return Ok(rep);
         }
     }
 }
