@@ -9,7 +9,6 @@ namespace RepairTracking.Core.Entities
         public Element Element { get; set; }
         public decimal Amount { get; set; }
         public string Observations { get; set; }
-        public Client Client { get; set; }
         public string Code { get; set; }
     }
 }

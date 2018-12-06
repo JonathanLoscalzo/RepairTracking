@@ -85,8 +85,7 @@ namespace RepairTracking.Web.Controllers
                 Element = elementRepository.GetById(repair.Element),
                 Observations = repair.Observations,
                 IsActive = true,
-                Status = repair.Status,
-                Client = client
+                Status = repair.Status
             };
             client.Repairs.ToList().Add(rep);
             clientRepository.Update(client);

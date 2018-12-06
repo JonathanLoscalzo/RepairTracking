@@ -15,7 +15,8 @@ namespace RepairTracking.Infrastructure.Repositories
         public override Client GetById(string id) => _dbContext.Clients
                 .Include(x => x.Address)
                 .Include(x => x.Document)
-                .Include(x => x.Repairs)
                 .SingleOrDefault(e => e.Id == id);
     }
+
+    
 }
