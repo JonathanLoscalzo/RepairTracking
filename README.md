@@ -26,6 +26,7 @@ Las reparaciones constan de **elementos reparables**. A su vez estos elementos s
   dotnet ef database update -s RepairTracking.Web/ -p RepairTracking.Infrastructure/
   ```
 8. Desde Visual Studio Code presionar **F5** para correr la aplicación (verificando que la BBDD se encuentra en segundo plano ejecutandose).
+
 9. Para iniciar sesión en el sistema, utilizar como nombre de usuario: `Admin` y contraseña: `1234ABab@` 
 
 
