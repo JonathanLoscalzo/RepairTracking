@@ -20,16 +20,17 @@ Las reparaciones constan de **elementos reparables**. A su vez estos elementos s
 1. Instalar la extension sugerida automaticamente: `C# For Visual Studio Code`
 1. Luego de la instalacion, se notificará que hay "assets" que son requeridos, y que hay dependencias sin resolver. Por lo tanto, permitirle a Visual Studio que resuelva todo lo anterior.
 1. Ubicarse en el directorio **"src\RepairTracking.Web\ClientApp"**, borrar la carpeta **node_modules** y desde ese directorio ejecutar el comando `npm install`
-1. Correr las migrations 
+1. Correr las migraciones en alguna terminal:
   ```
   cd src
   dotnet ef database update -s RepairTracking.Web/ -p RepairTracking.Infrastructure/
   ```
 8. Desde Visual Studio Code presionar **F5** para correr la aplicación (verificando que la BBDD se encuentra en segundo plano ejecutandose).
+9. Para iniciar sesión en el sistema, utilizar como nombre de usuario: `Admin` y contraseña: `1234ABab@` 
 
 
 
-## Migraciones
+## Migraciones y notas para los colaboradores
 Para crear migraciones en casos de cambio de modelo
 
 ```
