@@ -31,6 +31,8 @@ Las reparaciones constan de **elementos reparables**. A su vez estos elementos s
 
 ## Tecnologías empleadas para el desarrollo
 
+La aplicación consiste en una SPA (Single-Page-Application) implementada con React-Redux, la cual consume datos de una API Web implementada usando la plataforma .NET Core y el Framework ASP.NET Core. Mas detalles de estas tecnologías, con sus links de referencias, se encuentran a continuación:
+
 ### [React](https://reactjs.org/)
 Es una libreria de Javascript para la construcción de interfaces de usuario. Su filosofía es la siguiente:
 * **Declarativo:** Permite la creación de vistas simples para cada estado de la aplicación, y luego actualiza y renderiza solo los componentes necesarios cuando ocurre algún cambio en el estado de una vista. Todo esto hace que el código se vuelva mucho mas previsible y facil de mantener.
@@ -51,6 +53,17 @@ Ayuda a escribir aplicaciones que se comportan de manera consistente, corren en 
 * **Componentes presentacionales:** Definen como se ve la UI (markup, estilos). Por lo tanto, reciben los datos que tienen que ser mostrados.
 
 * **Componentes contenedores:**: Especifican como funcionan las cosas (búsqueda de datos, actualizaciones de estado). Se caracterizan por ser componentes envueltos en un [HOC](https://reactjs.org/docs/higher-order-components.html) (High-Order-Component), los cuales están conectados al _store_ de Redux. Estos componentes renderizan a los componentes presentacionales, enviandole por **[props](https://reactjs.org/docs/components-and-props.html)** los datos recibidos del _store_.
+
+### [.NET Core](https://docs.microsoft.com/en-us/dotnet/framework/get-started/net-core-and-open-source)
+Es una implementación de .NET Standard de propósito general, multiplataforma y open source. Incluye muchas de las APIs de .NET Framework (pero .NET Core tiene un set mas pequeño) e incluye un runtime, compilador y componentes que soportan una extensa variedad de sistemas operativos y chips. 
+
+### [ASP.NET Core](https://github.com/aspnet/AspNetCore)
+Es un Framework multiplataforma y open-source, para construir Aplicaciones conectadas a Internet basadas en la nube, como Web-Apps, IoT Apps, y backends moviles. ASP.NET Core puede correr sobre .NET Core o sobre .NET Framework. Fué diseñado para proveer un framework de desarrollo optimizado para apps que van a ser desplegadas en la nube. Consiste en una serie de componentes modulares con poco overhead, para obtener la máxima flexibilidad en la construcción de las soluciones.
+
+### [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
+EF Core es una versión liviana, extensible y multiplataforma de la famosa tecnología de acceso a datos [Entity Framework](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/overview).
+EF Core actua como O/RM (object-relational mapper), permitiendo que desarrolladores .NET puedan trabajar con una BBDD usando objetos .NET, y eliminando la necesidad de código de acceso a datos que ellos mismos tendrían que escribir si no dispusieran de este medio.
+EF Core trabaja con muchos motores de bases de datos. En nuestro proyecto, utilizamos como DBMS MySQL. Para lograr mapear las entidades a objetos y viceversa con dicho DBMS, se utilizó el provider [Pomelo](https://docs.microsoft.com/en-us/ef/core/providers/index) para EF Core y MySQL.
 
 ## Migraciones y notas para los colaboradores
 Para crear migraciones en casos de cambio de modelo
