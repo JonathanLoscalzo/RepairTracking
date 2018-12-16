@@ -29,7 +29,28 @@ Las reparaciones constan de **elementos reparables**. A su vez estos elementos s
 
 9. Para iniciar sesión en el sistema, utilizar como nombre de usuario: `Admin` y contraseña: `1234ABab@` 
 
+## Tecnologías empleadas para el desarrollo
 
+### [React](https://reactjs.org/)
+Es una libreria de Javascript para la construcción de interfaces de usuario. Su filosofía es la siguiente:
+* **Declarativo:** Permite la creación de vistas simples para cada estado de la aplicación, y luego actualiza y renderiza solo los componentes necesarios cuando ocurre algún cambio en el estado de una vista. Todo esto hace que el código se vuelva mucho mas previsible y facil de mantener.
+
+* **Basado en componentes:** Permite la construcción de componentes encapsulados que gestionan su propio estado, para luego componer dichos componentes con el fin de construir UIs mucho mas complejas.
+
+### [Redux](https://redux.js.org/)
+Redux es un contenedor predecible del estado de aplicaciones JavaScript.
+Ayuda a escribir aplicaciones que se comportan de manera consistente, corren en distintos ambientes (cliente, servidor y nativo), y son fáciles de probar. La escencia de redux se puede resumir en:
+* **Store:** Objeto plano que contiene todo el estado de la aplicación. Este objeto _Store_ es único.
+
+* **Reducers:** Son funciones que especifican como cambia el estado almacenado en el **store** en respuesta de una **action**. Estas funciones, además, son _puras_, esto es, no modifican sus argumentos, no realizan tareas con efectos secundarios como llamadas a un API o transiciones de rutas, ni tampoco llaman a una función no pura, por ejemplo `Date.now()` o `Math.random()`.
+* **Actions:** Las _acciones_ son un bloque de información (objetos planos) que envia datos desde la aplicación al store. Son la única fuente de información para el store. Las acciones, además, permiten indicar que _algo ocurrió_ pero no especifican como va a cambiar el _store_ en consecuencia a lo ocurrido. Es por eso que dichas acciones se complementan con los reducers para efectuar cambios en el estado de la aplicación.
+
+### [React-Redux](https://react-redux.js.org/)
+
+[Aquí](https://es.redux.js.org/docs/basico/uso-con-react.html) se describe con detalle el patrón de implementación empleado para la construcción de componentes de _React_ que están conectados al store de _Redux_. En esencia, consiste en lo siguiente:
+* **Componentes presentacionales:** Definen como se ve la UI (markup, estilos). Por lo tanto, reciben los datos que tienen que ser mostrados.
+
+* **Componentes contenedores:**: Especifican como funcionan las cosas (búsqueda de datos, actualizaciones de estado). Se caracterizan por ser componentes envueltos en un [HOC](https://reactjs.org/docs/higher-order-components.html) (High-Order-Component), los cuales están conectados al _store_ de Redux. Estos componentes renderizan a los componentes presentacionales, enviandole por **[props](https://reactjs.org/docs/components-and-props.html)** los datos recibidos del _store_.
 
 ## Migraciones y notas para los colaboradores
 Para crear migraciones en casos de cambio de modelo
