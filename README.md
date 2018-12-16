@@ -65,6 +65,33 @@ EF Core es una versión liviana, extensible y multiplataforma de la famosa tecno
 EF Core actua como O/RM (object-relational mapper), permitiendo que desarrolladores .NET puedan trabajar con una BBDD usando objetos .NET, y eliminando la necesidad de código de acceso a datos que ellos mismos tendrían que escribir si no dispusieran de este medio.
 EF Core trabaja con muchos motores de bases de datos. En nuestro proyecto, utilizamos como DBMS MySQL. Para lograr mapear las entidades a objetos y viceversa con dicho DBMS, se utilizó el provider [Pomelo](https://docs.microsoft.com/en-us/ef/core/providers/index) para EF Core y MySQL.
 
+## Requerimientos del proyecto:
+Se muestra, a continuación, un listado con todas las Historias de usuario, tanto desarrolladas como pendientes de desarrollo.
+
+### Historias de usuario completadas:
+* Crear cliente.
+
+* Modificar datos de un cliente.
+* Listar clientes.
+* Ver detalles de un cliente.
+* Iniciar sesión.
+* Cerrar sesión.
+* Listar elementos reparables.
+* Cargar tipo de elementos reparables.
+* Modificar elemento reparable.
+* Eliminar elemento reparable.
+* Ver detalles de un elemento reparable.
+* Tareas Genéricas CRUD.
+* Cargar nueva reparación.
+* Listar reparaciones generales o para un cliente.
+
+### Historias de usuario pendientes de desarrollo:
+* Cargar pieza/tarea a una reparación.
+
+* Ver detalles de una reparación.
+* Finalizar reparación.
+* Chequear estado de una reparación.
+
 ## Migraciones y notas para los colaboradores
 Para crear migraciones en casos de cambio de modelo
 
