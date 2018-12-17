@@ -11,6 +11,7 @@ Las reparaciones constan de **elementos reparables**. A su vez estos elementos s
 * [NPM](https://www.npmjs.com/) (Obligatorio)
 * [.NET Core SDK](https://dotnet.microsoft.com/download) (Obligatorio)
 * [XAMPP](https://www.apachefriends.org/es/index.html) (sugerencia para correr el DBMS MySQL en segundo plano y para crear la BBDD con phpMyAdmin)
+* [Docker y Compose](https://docs.docker.com/compose/) (sugerencia para correr el DBMS MySQL en vez de XAMPP)
 
 ## Pasos para una correcta ejecución de la aplicación:
 1. Instalar todo el software mencionado anteriormente. Recomendación: reiniciar el SO antes de continuar con los siguientes pasos.
