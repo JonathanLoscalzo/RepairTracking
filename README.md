@@ -12,14 +12,20 @@ Las reparaciones constan de **elementos reparables**. A su vez estos elementos s
 * [Visual Studio Code](https://code.visualstudio.com/) (Obligatorio)
 
 * [NPM](https://www.npmjs.com/) (Obligatorio)
+  - Se puede utilizar [NVM](https://github.com/creationix/nvm) o [NVM-win](https://github.com/coreybutler/nvm-windows) y utilizar la versión 8.x de Nodejs.
 * [.NET Core SDK](https://dotnet.microsoft.com/download) (Obligatorio)
 * [XAMPP](https://www.apachefriends.org/es/index.html) (sugerencia para correr el DBMS MySQL en segundo plano y para crear la BBDD con phpMyAdmin)
 * [Docker y Compose](https://docs.docker.com/compose/) (sugerencia para correr el DBMS MySQL en vez de XAMPP)
 
 ## Pasos para una correcta ejecución de la aplicación:
 1. Instalar todo el software mencionado anteriormente. Recomendación: reiniciar el SO antes de continuar con los siguientes pasos.
-
+   
 1. Crear una BBDD vacía con nombre `repairtracking` en MySQL.
+   - En el caso de utilizar docker, este paso se realiza automático. Ejecutar
+     ```
+     docker-compose -f "docker-compose.yml" up -d --build
+     ```
+     
 1. Abrir el contenido clonado del repositorio con VS Code.
 1. Instalar la extension sugerida automaticamente: `C# For Visual Studio Code`
 1. Luego de la instalacion, se notificará que hay "assets" que son requeridos, y que hay dependencias sin resolver. Por lo tanto, permitirle a Visual Studio que resuelva todo lo anterior.
