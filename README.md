@@ -4,6 +4,9 @@ Aplicación Web que ofrece un conjunto de soluciones en entornos de soporte téc
 Los reparadores tienen la posibilidad de **administrar clientes**, y de **gestionar las reparaciones** encomendadas por los clientes. Mientras que los clientes tienen la posibilidad de **consultar el estado de sus reparaciones** solicitadas. 
 Las reparaciones constan de **elementos reparables**. A su vez estos elementos se componen de **piezas y tareas**, que son asignadas por el reparador para cada elemento reparable que se cargue al sistema, permitiendo que futuras reparaciones se den de alta en el sistema con mayor rapidez.
 
+## Arquitectura
+(Ir a link arquitectura)[https://github.com/JonathanLoscalzo/RepairTracking/blob/master/README.ARQ.md]
+
 ## Software requerido:
 
 * [Visual Studio Code](https://code.visualstudio.com/) (Obligatorio)
