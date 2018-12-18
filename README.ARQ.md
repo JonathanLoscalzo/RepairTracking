@@ -1,5 +1,5 @@
 # Diagrama
-[](https://github.com/JonathanLoscalzo/RepairTracking/blob/master/diagrama_arquitectura.jpg)
+![alt text](https://github.com/JonathanLoscalzo/RepairTracking/blob/master/diagrama_arquitectura.jpg)
 
 # Descripción de la Arquitectura del Proyecto
 
