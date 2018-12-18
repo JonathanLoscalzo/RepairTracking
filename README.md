@@ -5,7 +5,7 @@ Los reparadores tienen la posibilidad de **administrar clientes**, y de **gestio
 Las reparaciones constan de **elementos reparables**. A su vez estos elementos se componen de **piezas y tareas**, que son asignadas por el reparador para cada elemento reparable que se cargue al sistema, permitiendo que futuras reparaciones se den de alta en el sistema con mayor rapidez.
 
 ## Arquitectura
-(Ir a link arquitectura)[https://github.com/JonathanLoscalzo/RepairTracking/blob/master/README.ARQ.md]
+[Ir a link arquitectura](https://github.com/JonathanLoscalzo/RepairTracking/blob/master/README.ARQ.md)
 
 ## Software requerido:
 
